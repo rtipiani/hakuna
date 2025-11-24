@@ -1,22 +1,21 @@
+---
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar.tsx";
+import TopHeader from "../components/TopHeader.tsx";
+import "../styles/global.css";
+---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Angel Aventura Tours | Operador Turístico Calificado Por MINCETUR</title>
+		<meta name="description" content="Somos una empresa especializada en brindar servicios turísticos en la selva central del Perú con más de 17 años de experiencia y tenemos como fin promover nuestra cultura, gastronomía y el cuidado del medio ambiente.">
 	</head>
 	<body>
+		<TopHeader client:load />
+		<Navbar client:load />
 		<slot />
+		<Footer client:load />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
