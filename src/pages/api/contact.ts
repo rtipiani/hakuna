@@ -13,10 +13,10 @@ export const POST: APIRoute = async ({ request }) => {
     try {
         await resend.emails.send({
             from: "Formulario Web <onboarding@resend.dev>",
-            to: "angelaventuratours@gmail.com", // <-- tu correo real
+            to: "angelaventuratours@gmail.com",
             subject: `Nuevo mensaje de ${name}`,
             html: `
-                <h2>Nuevo mensaje desde el formulario de contacto</h2>
+                <h2>Nuevo mensaje recibido:</h2>
                 <p><strong>Nombre:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Mensaje:</strong></p>
@@ -24,14 +24,9 @@ export const POST: APIRoute = async ({ request }) => {
             `,
         });
 
-        return new Response("OK", {
-            status: 200,
-        });
+        return new Response("OK", { status: 200 });
     } catch (error) {
-        console.error(error);
-
-        return new Response("Error sending email", {
-            status: 500,
-        });
+        console.error("RESEND ERROR:", error);
+        return new Response("ERROR", { status: 500 });
     }
 };
