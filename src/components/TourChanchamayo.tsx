@@ -1,87 +1,137 @@
-import img1 from "../assets/images/chanchamayo/chanchamayo-1.png";
-import img2 from "../assets/images/chanchamayo/chanchamayo-2.png";
-import img3 from "../assets/images/chanchamayo/chanchamayo-3.png";
-import img4 from "../assets/images/chanchamayo/chanchamayo-4.png";
-import img5 from "../assets/images/chanchamayo/chanchamayo-5.png";
-import img6 from "../assets/images/chanchamayo/chanchamayo-6.png";
+import mirador from "../assets/images/cruz-chanchamayo.png";
+import catarata from "../assets/images/catarata-bayoz.png";
+import zoologico from "../assets/images/gallito-de-las-rocas.png";
 
-export default function TourChanchamayo() {
-    const images = [img1, img2, img3, img4, img5, img6];
+// Galería general
+import g1 from "../assets/images/escolares/esc4.png";
+import g2 from "../assets/images/escolares/esc5.png";
+import g3 from "../assets/images/escolares/esc6.png";
+import g4 from "../assets/images/escolares/esc7.png";
+import g5 from "../assets/images/escolares/esc8.png";
+import g6 from "../assets/images/escolares/esc9.png";
+import g7 from "../assets/images/escolares/esc10.png";
+import g8 from "../assets/images/escolares/esc11.png";
+import g9 from "../assets/images/escolares/esc12.png";
+import g10 from "../assets/images/escolares/esc13.png";
+import g11 from "../assets/images/escolares/esc14.png";
+import g12 from "../assets/images/escolares/esc15.png";
 
+const tours = [
+    {
+        title: "CHANCHAMAYO",
+        days: "Salida 10:30AM",
+        lista: [
+            "Mariposario",
+            "Mirador Cruz de Chanchamayo",
+            "Catarata Tirol",
+            "Degustación de helados orgánicos",
+            "Degustación de café"
+        ],
+        image: mirador
+    },
+    {
+        title: "PERENÉ",
+        days: "Salida 10:00AM",
+        lista: [
+            "Puente colgante Kimiri",
+            "Perfil del nativo dormido",
+            "Reino del machetero",
+            "Catarata Bayoz",
+            "Catarata velo de la novia",
+            "Comunidad nativa Ashaninka"
+        ],
+        image: catarata
+    },
+    {
+        title: "LA FORTUNA",
+        days: "Salida 11:00AM",
+        lista: [
+            "Mirador cruz de Chanchamayo",
+            "Zoológico gallito de las rocas",
+            "Cascadas la fortuna",
+            "Jacuzzi natural",
+            "Plaza de san Ramón",
+            "Puente Herrería"
+        ],
+        image: zoologico
+    }
+];
+
+// Galería independiente (abajo)
+const galleryImages = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
+
+const Recomendation = () => {
     return (
-        <section className="w-full py-20 bg-white">
-            <div className="max-w-6xl mx-auto px-6">
-
-                <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide drop-shadow-sm">
-                    Tour a Chanchamayo
+        <section className="py-16 bg-gray-50">
+            <div className="max-w-7xl mx-auto text-center">
+                <h2 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
+                    Tours <br /> Chanchamayo
                 </h2>
 
-                <p className="text-center text-gray-600 mt-3 mb-12 text-lg md:text-xl">
-                    Naturaleza, aventura y biodiversidad en un solo día.
-                </p>
+                {/* Cards */}
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                    {tours.map((tour, index) => {
+                        const message = `¡Hola! Angel Aventura Tours. Estoy interesado en el tour ${tour.title} - ${tour.days}.`;
+                        const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
 
-                <div className="relative bg-linear-to-br from-red-50 to-red-50 p-10 rounded-3xl shadow-xl border border-red-100">
+                        return (
+                            <div key={index} className="bg-white rounded-lg shadow-md">
+                                {/* Imagen */}
+                                <img
+                                    src={tour.image.src}
+                                    alt={tour.title}
+                                    className="w-full h-56 object-cover rounded-t-lg"
+                                />
 
-                    <h3 className="text-3xl font-bold text-red-700 mb-10 text-center">
-                        Itinerario del Tour
-                    </h3>
+                                <div className="p-6">
+                                    {/* Título */}
+                                    <h3 className="text-xl font-semibold mb-2">
+                                        {tour.title}
+                                    </h3>
 
-                    <div className="space-y-12 relative">
+                                    {/* Días */}
+                                    <p className="font-medium text-yellow-600 mb-2">
+                                        {tour.days}
+                                    </p>
 
-                        <div className="absolute left-7 top-0 bottom-0 w-1 bg-red-500/80 rounded-full"></div>
+                                    {/* Lista */}
+                                    <ul className="text-left mb-4 list-disc list-inside text-gray-700">
+                                        {tour.lista.map((item, i) => (
+                                            <li key={i}>{item}</li>
+                                        ))}
+                                    </ul>
 
-                        {[
-                            [
-                                "📍 Salida – 10:30 AM",
-                                "Inicio del recorrido hacia el distrito de San Ramón."
-                            ],
-                            [
-                                "🥾 Caminata al Tirol",
-                                "Caminata de 35 minutos por un hermoso sendero rodeado de vegetación que nos llevará a la Catarata del Tirol."
-                            ],
-                            [
-                                "🏛 Plaza de San Ramón",
-                                "Visita a la plaza principal del distrito, ideal para fotografías y descanso breve."
-                            ],
-                            [
-                                "🦋 Mariposario Zhaveta Yard",
-                                "Recorrido por el mariposario que cuenta con orquideario, vivero de mariposas y un mini zoológico."
-                            ],
-                            [
-                                "🍨 Degustaciones",
-                                "Degustación de licores exóticos y helados artesanales de la zona."
-                            ],
-                            [
-                                "🔙 Retorno – 6:00 PM",
-                                "Retorno a Chanchamayo y fin del tour."
-                            ],
-                        ].map(([title, text], i) => (
-                            <div key={i} className="relative pl-20">
-                                <div className="absolute left-4 top-2 w-10 h-10 bg-red-600 rounded-full shadow-md border-4 border-white"></div>
-
-                                <h4 className="text-xl font-bold text-gray-800">{title}</h4>
-                                <p className="text-gray-700 mt-2 leading-relaxed">{text}</p>
+                                    {/* Botón */}
+                                    <a
+                                        href={waLink}
+                                        target="_blank"
+                                        className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600"
+                                    >
+                                        Consultar ahora
+                                        <i className="fa-brands fa-whatsapp ml-1"></i>
+                                    </a>
+                                </div>
                             </div>
-                        ))}
-                    </div>
+                        );
+                    })}
                 </div>
 
-                <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {images.map((img, i) => (
-                        <div
-                            key={i}
-                            className="rounded-3xl shadow-xl overflow-hidden border-[6px] border-transparent bg-linear-to-br from-white to-white p-[3px] hover:scale-105 transition-all duration-300"
-                        >
-                            <img
-                                src={img.src}
-                                alt={`Tour Chanchamayo imagen ${i + 1}`}
-                                className="w-full h-56 object-cover rounded-2xl"
-                            />
-                        </div>
+                {/* 🔻 Galería ABAJO */}
+                <h3 className="text-2xl font-semibold mt-16 mb-6">Experiencias</h3>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4">
+                    {galleryImages.map((img, index) => (
+                        <img
+                            key={index}
+                            src={img.src}
+                            alt={`Galería ${index}`}
+                            className="h-32 w-full object-cover rounded-lg shadow-sm hover:scale-105 transition-transform cursor-pointer"
+                        />
                     ))}
                 </div>
-
             </div>
         </section>
     );
-}
+};
+
+export default Recomendation;

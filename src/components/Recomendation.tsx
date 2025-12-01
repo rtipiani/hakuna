@@ -21,7 +21,7 @@ const tours = [
         price: 50,
         image: oxapampa,
         description:
-        "Aventura en Oxapampa: canopy opcional, manantial La Virgen, casa museo, bailes tiroleses, artesanías, cueva Tunki y degustación en El Wharapo. Salida 9:00 a.m. — Retorno 7:30 p.m."
+        "Aventura en Oxapampa: manantial La Virgen, casa museo, bailes tiroleses, artesanías, cueva Tunki y degustación en El Wharapo. Salida 9:00 a.m. — Retorno 7:30 p.m."
     },
     {
         title: "TOUR VILLA RICA",
@@ -37,7 +37,7 @@ const tours = [
         price: 120,
         image: pozuzo,
         description:
-        "Aventura en Pozuzo: catarata Rayantambo, Portal de Bienvenida, colonia austro-alemana, pozas de Agua Salada, cervecería Dorcher Bier y puente Emperador Guillermo I. Salida 6:00 a.m. — Retorno 8:30 p.m."
+        "Aventura en Pozuzo: catarata Rayantambo, Portal de Bienvenida, colonia Austro-Alemana, pozas de Agua Salada, cervecería Dorcher Bier y puente Emperador Guillermo I. Salida 6:00 a.m. — Retorno 8:30 p.m."
     },
     {
         title: "TOUR INDIANA JONES",
