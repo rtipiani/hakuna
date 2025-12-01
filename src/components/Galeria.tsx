@@ -15,7 +15,6 @@ import img12 from "../assets/images/galeria/oxapampa-5.png";
 import img13 from "../assets/images/galeria/oxapampa-6.png";
 import img14 from "../assets/images/galeria/oxapampa-7.png";
 import img15 from "../assets/images/galeria/chanchamayo-1.png";
-import img16 from "../assets/images/galeria/chanchamayo-2.png";
 import img17 from "../assets/images/galeria/chanchamayo-3.png";
 import img18 from "../assets/images/galeria/chanchamayo-4.png";
 import img19 from "../assets/images/galeria/chanchamayo-5.png";
@@ -26,13 +25,12 @@ import gal2 from "../assets/images/galeria/gal2.png";
 import gal3 from "../assets/images/galeria/gal3.png";
 import gal4 from "../assets/images/galeria/gal4.png";
 import gal5 from "../assets/images/galeria/gal5.png";
-import gal6 from "../assets/images/galeria/gal6.png";
 
 export default function Gallery() {
     const images = [
-        gal1, gal2, gal3, gal4, gal5, gal6, img1, img2, img3, img4, img5, img6, img7,
+        gal1, gal2, gal3, gal4, gal5, img1, img2, img3, img4, img5, img6, img7,
         img8, img9, img10, img11, img12, img13, img14,
-        img15, img16, img17, img18, img19, img20
+        img15, img17, img18, img19, img20
     ];
 
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
