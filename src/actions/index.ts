@@ -15,7 +15,7 @@ export const server = {
 
         handler: async ({ name, email, message }) => {
             const { data, error } = await resend.emails.send({
-                from: 'Consultas <np-reply@gmail.com>',
+                from: 'Consultas <no-reply@gmail.com>',
                 to: ['rtipiani@gmail.com'],
                 subject: `Nuevo mensaje de ${name}`,
                 html: `

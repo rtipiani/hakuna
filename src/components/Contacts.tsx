@@ -16,7 +16,7 @@ export default function Contactanos() {
     <div className="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-3xl mx-auto">
 
       <form 
-        action={actions.send}
+        action="/actions/send"
         method="POST"
         encType="application/x-www-form-urlencoded"
         className="space-y-6"
