@@ -1,3 +1,4 @@
+// src/actions/index.ts
 import { ActionError, defineAction } from "astro:actions";
 import { Resend } from "resend";
 
@@ -5,16 +6,13 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const server = {
     send: defineAction({
-        accept: "form",  // Aceptamos el formulario
+        accept: "form", // Aceptamos formulario
 
         handler: async (formData) => { // Recibimos formData directamente
-
-            // Extraemos los valores de los campos
             const name = formData.get("name") as string | null;
             const email = formData.get("email") as string | null;
             const message = formData.get("message") as string | null;
 
-            // Validamos que no falten datos
             if (!name || !email || !message) {
                 throw new ActionError({
                     code: "BAD_REQUEST",
@@ -22,10 +20,9 @@ export const server = {
                 });
             }
 
-            // Enviamos el correo con Resend
             const { data, error } = await resend.emails.send({
                 from: "Consultas <no-reply@gmail.com>",
-                to: ["rtipiani@gmail.com"],
+                to: ["rtipiani@gmail.com"], // Cambia esto por tu correo real
                 subject: `Nuevo mensaje de ${name}`,
                 html: `
                     <h2>Nueva consulta desde la web</h2>
@@ -36,7 +33,6 @@ export const server = {
                 `,
             });
 
-            // Si hubo un error al enviar el correo
             if (error) {
                 throw new ActionError({
                     code: "BAD_REQUEST",
