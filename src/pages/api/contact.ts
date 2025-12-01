@@ -4,16 +4,19 @@ import { Resend } from "resend";
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
-    const formData = await request.formData();
+    console.log("API Contact Endpoint Triggered");
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    const formData = await request.formData();
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    console.log("Form Data:", { name, email, message });
 
     try {
         await resend.emails.send({
             from: "Formulario Web <onboarding@resend.dev>",
-            to: "angelaventuratours@gmail.com",
+            to: "angelaventuratours@gmail.com",  // Cambia a tu correo real
             subject: `Nuevo mensaje de ${name}`,
             html: `
                 <h2>Nuevo mensaje recibido:</h2>
@@ -24,9 +27,10 @@ export const POST: APIRoute = async ({ request }) => {
             `,
         });
 
+        console.log("Email enviado exitosamente.");
         return new Response("OK", { status: 200 });
     } catch (error) {
         console.error("RESEND ERROR:", error);
-        return new Response("ERROR", { status: 500 });
+        return new Response("Error al enviar el correo", { status: 500 });
     }
 };
