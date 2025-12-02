@@ -1,9 +1,40 @@
+/// <reference types="astro/client" />
+
 interface ImportMetaEnv {
-    readonly RESEND_API_KEY: string;
-    readonly CONTACT_EMAIL_FROM: string;
-    readonly CONTACT_EMAIL_TO: string;
+    readonly WEB3FORMS_ACCESS_KEY: string;
 }
 
 interface ImportMeta {
     readonly env: ImportMetaEnv;
+}
+
+// Image module declarations
+declare module '*.webp' {
+    const src: ImageMetadata;
+    export default src;
+}
+
+declare module '*.jpg' {
+    const src: ImageMetadata;
+    export default src;
+}
+
+declare module '*.jpeg' {
+    const src: ImageMetadata;
+    export default src;
+}
+
+declare module '*.png' {
+    const src: ImageMetadata;
+    export default src;
+}
+
+declare module '*.gif' {
+    const src: ImageMetadata;
+    export default src;
+}
+
+declare module '*.svg' {
+    const src: ImageMetadata;
+    export default src;
 }

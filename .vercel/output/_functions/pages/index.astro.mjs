@@ -2,7 +2,7 @@ import { e as createComponent, k as renderComponent, r as renderTemplate } from 
 import 'piccolore';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useRef, useEffect } from 'react';
-import { $ as $$Layout } from '../chunks/Layout_DJKFbqjQ.mjs';
+import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
 import { p as perene, o as oxapampa, v as villaRica, a as pozuzo, b as puenteKimiri, c as chanchamayo, l as laFortuna } from '../chunks/la-fortuna_C1m9C7LR.mjs';
 export { renderers } from '../renderers.mjs';
 

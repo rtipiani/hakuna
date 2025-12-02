@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "tsc && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
@@ -19,15 +19,16 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "astro": "^5.16.3",
+    "nodemailer": "^7.0.11",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "resend": "^6.5.2",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
+    "@types/nodemailer": "^7.0.4",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@typescript-eslint/parser": "^8.48.0",
     "astro-eslint-parser": "^1.2.2",

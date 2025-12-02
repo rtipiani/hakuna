@@ -2,7 +2,7 @@ import { e as createComponent, k as renderComponent, r as renderTemplate } from 
 import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { g as g1, a as g2, b as g3, c as g4, d as g5, e as g6, f as g7, h as g8, i as g9, j as g10, k as g11, l as g12 } from '../chunks/esc15_Cw49ojp6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_DJKFbqjQ.mjs';
+import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
 export { renderers } from '../renderers.mjs';
 
 const perene = new Proxy({"src":"/_astro/perene.BUz1u9SV.png","width":1200,"height":800,"format":"png"}, {
