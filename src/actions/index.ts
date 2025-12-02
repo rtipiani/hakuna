@@ -15,9 +15,10 @@ export const server = {
         }),
         handler: async ({ name, email, message }) => {
             const { data, error } = await resend.emails.send({
-                from: "Consultas <no-reply@gmail.com>",
-                to: ["rtipiani@gmail.com"],
+                from: "Acme <onboarding@resend.dev>",
+                to: ["delivered@resend.dev"],
                 subject: `Nuevo mensaje de ${name}`,
+                replyTo: email, // ← Corregido a camelCase
                 html: `
                     <h2>Nueva consulta desde la web</h2>
                     <p><strong>Nombre:</strong> ${name}</p>

@@ -10,23 +10,25 @@ export default function Contactanos() {
     setLoading(true);
     setMessage("");
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget; // Guardar referencia AQUÍ
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
     
     try {
-      const result = await actions.send({
-        name: formData.get("name") as string,
-        email: formData.get("email") as string,
-        message: formData.get("message") as string,
-      });
-
+      const result = await actions.send(data);
+      
       if (result.error) {
         setMessage(`Error: ${result.error.message}`);
       } else {
         setMessage("¡Mensaje enviado exitosamente!");
-        e.currentTarget.reset();
+        form.reset(); // Usar la referencia guardada
       }
     } catch (error) {
-      console.error("Error al enviar:", error);
+      console.error("Error capturado:", error);
       setMessage("Error al enviar el mensaje. Intenta nuevamente.");
     } finally {
       setLoading(false);
