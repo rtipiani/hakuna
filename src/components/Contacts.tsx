@@ -1,4 +1,4 @@
-import { actions } from "astro:actions";
+import { server } from "astro:actions";
 
 export default function Contactanos() {
   return (
@@ -17,7 +17,8 @@ export default function Contactanos() {
 
           {/* FORMULARIO REAL USANDO ASTRO ACTION */}
           <form 
-            action={actions.send} method="post" 
+            method="post"
+            action={server.send}
             className="space-y-6"
           >
 
