@@ -1,16 +1,16 @@
-import { R as ROUTE_TYPE_HEADER, p as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, q as ActionNotFoundError, v as clientAddressSymbol, w as LocalsNotAnObject, x as REROUTABLE_STATUS_CODES, y as responseSentSymbol, z as nodeRequestAbortControllerCleanupSymbol } from './astro/server_COwmtzgy.mjs';
+import { R as ROUTE_TYPE_HEADER, p as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, q as ActionNotFoundError, v as clientAddressSymbol, w as LocalsNotAnObject, x as REROUTABLE_STATUS_CODES, y as responseSentSymbol, z as nodeRequestAbortControllerCleanupSymbol } from './astro/server_ByyNhJnE.mjs';
+import colors from 'piccolore';
 import 'clsx';
 import 'cookie';
-import { D as DEFAULT_404_ROUTE, e as default404Instance, f as ensure404Route } from './astro-designed-error-pages_WngsdbV7.mjs';
+import { D as DEFAULT_404_ROUTE, e as default404Instance, f as ensure404Route } from './astro-designed-error-pages_BNwg5yew.mjs';
 import 'es-module-lexer';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
 import { f as fileExtension, j as joinPaths, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, a as appendForwardSlash, b as isInternalPath, c as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_De6Se6hL.mjs';
-import { m as matchPattern } from './index_CYyG6us9.mjs';
-import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as redirectToFallback, b as redirectToDefaultLocale, c as requestHasLocale, e as normalizeTheLocale, f as defineMiddleware, S as SERVER_ISLAND_COMPONENT, h as SERVER_ISLAND_ROUTE, j as createEndpoint, R as RouteCache, s as sequence, k as findRouteToRewrite, m as matchRoute, l as RenderContext, P as PERSIST_SYMBOL, o as getSetCookiesFromResponse } from './server_C6oVW338.mjs';
-import colors from 'picocolors';
-import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_D-KLlw1I.mjs';
+import { m as matchPattern } from './index_CZWCDbwp.mjs';
+import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as redirectToFallback, b as redirectToDefaultLocale, c as requestHasLocale, e as normalizeTheLocale, f as defineMiddleware, S as SERVER_ISLAND_COMPONENT, h as SERVER_ISLAND_ROUTE, j as createEndpoint, R as RouteCache, s as sequence, k as findRouteToRewrite, v as validateAndDecodePathname, m as matchRoute, l as RenderContext, P as PERSIST_SYMBOL, o as getSetCookiesFromResponse } from './server_BRRsNqos.mjs';
+import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_Dr8t9vgw.mjs';
 import '@vercel/routing-utils';
 import 'deterministic-object-hash';
 import nodePath from 'node:path';
@@ -671,6 +671,72 @@ class App {
     }
   }
   /**
+   * Validate a hostname by rejecting any with path separators.
+   * Prevents path injection attacks. Invalid hostnames return undefined.
+   */
+  static sanitizeHost(hostname) {
+    if (!hostname) return void 0;
+    if (/[/\\]/.test(hostname)) return void 0;
+    return hostname;
+  }
+  /**
+   * Validate forwarded headers (proto, host, port) against allowedDomains.
+   * Returns validated values or undefined for rejected headers.
+   * Uses strict defaults: http/https only for proto, rejects port if not in allowedDomains.
+   */
+  static validateForwardedHeaders(forwardedProtocol, forwardedHost, forwardedPort, allowedDomains) {
+    const result = {};
+    if (forwardedProtocol) {
+      if (allowedDomains && allowedDomains.length > 0) {
+        const hasProtocolPatterns = allowedDomains.some(
+          (pattern) => pattern.protocol !== void 0
+        );
+        if (hasProtocolPatterns) {
+          try {
+            const testUrl = new URL(`${forwardedProtocol}://example.com`);
+            const isAllowed = allowedDomains.some((pattern) => matchPattern(testUrl, pattern));
+            if (isAllowed) {
+              result.protocol = forwardedProtocol;
+            }
+          } catch {
+          }
+        } else if (/^https?$/.test(forwardedProtocol)) {
+          result.protocol = forwardedProtocol;
+        }
+      } else if (/^https?$/.test(forwardedProtocol)) {
+        result.protocol = forwardedProtocol;
+      }
+    }
+    if (forwardedPort && allowedDomains && allowedDomains.length > 0) {
+      const hasPortPatterns = allowedDomains.some((pattern) => pattern.port !== void 0);
+      if (hasPortPatterns) {
+        const isAllowed = allowedDomains.some((pattern) => pattern.port === forwardedPort);
+        if (isAllowed) {
+          result.port = forwardedPort;
+        }
+      }
+    }
+    if (forwardedHost && forwardedHost.length > 0 && allowedDomains && allowedDomains.length > 0) {
+      const protoForValidation = result.protocol || "https";
+      const sanitized = App.sanitizeHost(forwardedHost);
+      if (sanitized) {
+        try {
+          const hostnameOnly = sanitized.split(":")[0];
+          const portFromHost = sanitized.includes(":") ? sanitized.split(":")[1] : void 0;
+          const portForValidation = result.port || portFromHost;
+          const hostWithPort = portForValidation ? `${hostnameOnly}:${portForValidation}` : hostnameOnly;
+          const testUrl = new URL(`${protoForValidation}://${hostWithPort}`);
+          const isAllowed = allowedDomains.some((pattern) => matchPattern(testUrl, pattern));
+          if (isAllowed) {
+            result.host = sanitized;
+          }
+        } catch {
+        }
+      }
+    }
+    return result;
+  }
+  /**
    * Creates a pipeline by reading the stored manifest
    *
    * @param streaming
@@ -718,7 +784,7 @@ class App {
     const url = new URL(request.url);
     const pathname = prependForwardSlash(this.removeBase(url.pathname));
     try {
-      return decodeURI(pathname);
+      return validateAndDecodePathname(pathname);
     } catch (e) {
       this.getAdapterLogger().error(e.toString());
       return pathname;
@@ -739,7 +805,12 @@ class App {
     if (!pathname) {
       pathname = prependForwardSlash(this.removeBase(url.pathname));
     }
-    let routeData = matchRoute(decodeURI(pathname), this.#manifestData);
+    try {
+      pathname = validateAndDecodePathname(pathname);
+    } catch {
+      return void 0;
+    }
+    let routeData = matchRoute(pathname, this.#manifestData);
     if (!routeData) return void 0;
     if (allowPrerenderedRoutes) {
       return routeData;
@@ -752,20 +823,14 @@ class App {
     let pathname = void 0;
     const url = new URL(request.url);
     if (this.#manifest.i18n && (this.#manifest.i18n.strategy === "domains-prefix-always" || this.#manifest.i18n.strategy === "domains-prefix-other-locales" || this.#manifest.i18n.strategy === "domains-prefix-always-no-redirect")) {
-      let forwardedHost = request.headers.get("X-Forwarded-Host");
-      let protocol = request.headers.get("X-Forwarded-Proto");
-      if (protocol) {
-        protocol = protocol + ":";
-      } else {
-        protocol = url.protocol;
-      }
-      if (forwardedHost && !this.matchesAllowedDomains(forwardedHost, protocol?.replace(":", ""))) {
-        forwardedHost = null;
-      }
-      let host = forwardedHost;
-      if (!host) {
-        host = request.headers.get("Host");
-      }
+      const validated = App.validateForwardedHeaders(
+        request.headers.get("X-Forwarded-Proto") ?? void 0,
+        request.headers.get("X-Forwarded-Host") ?? void 0,
+        request.headers.get("X-Forwarded-Port") ?? void 0,
+        this.#manifest.allowedDomains
+      );
+      let protocol = validated.protocol ? validated.protocol + ":" : url.protocol;
+      let host = validated.host ?? request.headers.get("Host");
       if (host && protocol) {
         host = host.split(":")[0];
         try {
@@ -917,7 +982,9 @@ class App {
     } finally {
       await session?.[PERSIST_SYMBOL]();
     }
-    if (REROUTABLE_STATUS_CODES.includes(response.status) && response.headers.get(REROUTE_DIRECTIVE_HEADER) !== "no") {
+    if (REROUTABLE_STATUS_CODES.includes(response.status) && // If the body isn't null, that means the user sets the 404 status
+    // but uses the current route to handle the 404
+    response.body === null && response.headers.get(REROUTE_DIRECTIVE_HEADER) !== "no") {
       return this.#renderError(request, {
         locals,
         response,
@@ -1150,20 +1217,20 @@ class NodeApp extends App {
     const getFirstForwardedValue = (multiValueHeader) => {
       return multiValueHeader?.toString()?.split(",").map((e) => e.trim())?.[0];
     };
-    const forwardedProtocol = getFirstForwardedValue(req.headers["x-forwarded-proto"]);
     const providedProtocol = isEncrypted ? "https" : "http";
-    const protocol = forwardedProtocol ?? providedProtocol;
-    let forwardedHostname = getFirstForwardedValue(req.headers["x-forwarded-host"]);
     const providedHostname = req.headers.host ?? req.headers[":authority"];
-    if (forwardedHostname && !App.validateForwardedHost(
-      forwardedHostname,
-      allowedDomains,
-      forwardedProtocol ?? providedProtocol
-    )) {
-      forwardedHostname = void 0;
-    }
-    const hostname = forwardedHostname ?? providedHostname;
-    const port = getFirstForwardedValue(req.headers["x-forwarded-port"]);
+    const validated = App.validateForwardedHeaders(
+      getFirstForwardedValue(req.headers["x-forwarded-proto"]),
+      getFirstForwardedValue(req.headers["x-forwarded-host"]),
+      getFirstForwardedValue(req.headers["x-forwarded-port"]),
+      allowedDomains
+    );
+    const protocol = validated.protocol ?? providedProtocol;
+    const sanitizedProvidedHostname = App.sanitizeHost(
+      typeof providedHostname === "string" ? providedHostname : void 0
+    );
+    const hostname = validated.host ?? sanitizedProvidedHostname;
+    const port = validated.port;
     let url;
     try {
       const hostnamePort = getHostnamePort(hostname, port);

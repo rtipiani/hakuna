@@ -22,6 +22,46 @@
 		{
 			"src": "^/_actions(?:/(.*?))?/?$",
 			"dest": "_render"
+		},
+		{
+			"src": "^/chanchamayo/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/contactanos/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/escolares/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/full-day/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/galeria/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/nosotros/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/nuestras-politicas/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/oxapampa/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/selva-central/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
 		}
 	]
 }

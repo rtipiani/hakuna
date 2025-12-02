@@ -1,6 +1,7 @@
-import { g as getActionQueryString, a as astroCalledServerError, A as ActionError, d as deserializeActionResult, b as ACTION_QUERY_PARAMS, c as appendForwardSlash } from './astro-designed-error-pages_WngsdbV7.mjs';
+import { g as getActionQueryString, a as astroCalledServerError, A as ActionError, d as deserializeActionResult, b as ACTION_QUERY_PARAMS, c as appendForwardSlash } from './astro-designed-error-pages_BNwg5yew.mjs';
+import 'piccolore';
 import 'es-module-lexer';
-import './astro/server_COwmtzgy.mjs';
+import './astro/server_ByyNhJnE.mjs';
 import 'clsx';
 import 'cookie';
 
@@ -114,4 +115,6 @@ async function handleAction(param, path, context) {
     contentType: "application/json"
   });
 }
-toActionProxy();
+const actions = toActionProxy();
+
+export { actions as a };

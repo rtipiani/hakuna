@@ -1,8 +1,7 @@
-import { z } from 'zod';
-import { C as decryptString, G as createSlotValueFromString, H as isAstroComponentFactory, k as renderComponent, r as renderTemplate, p as REROUTE_DIRECTIVE_HEADER, A as AstroError, J as i18nNoLocaleFoundInPath, K as ResponseSentError, O as MiddlewareNoDataOrNextCalled, P as MiddlewareNotAResponse, Q as originPathnameSymbol, S as RewriteWithBodyUsed, T as GetStaticPathsRequired, V as InvalidGetStaticPathsReturn, W as InvalidGetStaticPathsEntry, X as GetStaticPathsExpectedParams, Y as GetStaticPathsInvalidRouteParam, Z as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, _ as NoMatchingStaticPathFound, $ as PrerenderDynamicEndpointPathCollide, a0 as ReservedSlotName, a1 as renderSlotToString, a2 as renderJSX, a3 as chunkToString, a4 as isRenderInstruction, a5 as ForbiddenRewrite, a6 as SessionStorageInitError, a7 as SessionStorageSaveError, R as ROUTE_TYPE_HEADER, a8 as ASTRO_VERSION, a9 as CspNotEnabled, aa as LocalsReassigned, ab as generateCspDigest, ac as PrerenderClientAddressNotAvailable, v as clientAddressSymbol, ad as ClientAddressNotAvailable, ae as StaticClientAddressNotAvailable, af as AstroResponseHeadersReassigned, y as responseSentSymbol$1, ag as renderPage, ah as REWRITE_DIRECTIVE_HEADER_KEY, ai as REWRITE_DIRECTIVE_HEADER_VALUE, aj as renderEndpoint, ak as ActionCalledFromServerError, q as ActionNotFoundError } from './astro/server_COwmtzgy.mjs';
+import { C as decryptString, G as createSlotValueFromString, H as isAstroComponentFactory, k as renderComponent, r as renderTemplate, p as REROUTE_DIRECTIVE_HEADER, A as AstroError, J as i18nNoLocaleFoundInPath, K as ResponseSentError, O as MiddlewareNoDataOrNextCalled, P as MiddlewareNotAResponse, Q as originPathnameSymbol, S as RewriteWithBodyUsed, T as GetStaticPathsRequired, V as InvalidGetStaticPathsReturn, W as InvalidGetStaticPathsEntry, X as GetStaticPathsExpectedParams, Y as GetStaticPathsInvalidRouteParam, Z as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, _ as NoMatchingStaticPathFound, $ as PrerenderDynamicEndpointPathCollide, a0 as ReservedSlotName, a1 as renderSlotToString, a2 as renderJSX, a3 as chunkToString, a4 as isRenderInstruction, a5 as ForbiddenRewrite, a6 as SessionStorageInitError, a7 as SessionStorageSaveError, R as ROUTE_TYPE_HEADER, a8 as ASTRO_VERSION, a9 as CspNotEnabled, aa as LocalsReassigned, ab as generateCspDigest, ac as PrerenderClientAddressNotAvailable, v as clientAddressSymbol, ad as ClientAddressNotAvailable, ae as StaticClientAddressNotAvailable, af as AstroResponseHeadersReassigned, y as responseSentSymbol$1, ag as renderPage, ah as REWRITE_DIRECTIVE_HEADER_KEY, ai as REWRITE_DIRECTIVE_HEADER_VALUE, aj as renderEndpoint, ak as ActionCalledFromServerError, q as ActionNotFoundError } from './astro/server_ByyNhJnE.mjs';
 import { a as appendForwardSlash, j as joinPaths, r as removeTrailingForwardSlash, p as prependForwardSlash, t as trimSlashes } from './path_De6Se6hL.mjs';
-import colors from 'picocolors';
-import { g as getActionQueryString, d as deserializeActionResult, D as DEFAULT_404_ROUTE, h as callSafely, A as ActionError, i as ActionInputError, s as serializeActionResult, j as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS } from './astro-designed-error-pages_WngsdbV7.mjs';
+import colors from 'piccolore';
+import { g as getActionQueryString, d as deserializeActionResult, D as DEFAULT_404_ROUTE, h as callSafely, A as ActionError, i as ActionInputError, s as serializeActionResult, j as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS } from './astro-designed-error-pages_BNwg5yew.mjs';
 import 'es-module-lexer';
 import 'clsx';
 import { serialize, parse } from 'cookie';
@@ -122,24 +121,26 @@ async function getRequestData(request) {
       if (!params.has("s") || !params.has("e") || !params.has("p")) {
         return badRequest("Missing required query parameters.");
       }
-      const rawSlots = params.get("s");
-      try {
-        return {
-          componentExport: params.get("e"),
-          encryptedProps: params.get("p"),
-          slots: JSON.parse(rawSlots)
-        };
-      } catch {
-        return badRequest("Invalid slots format.");
-      }
+      const encryptedSlots = params.get("s");
+      return {
+        componentExport: params.get("e"),
+        encryptedProps: params.get("p"),
+        encryptedSlots
+      };
     }
     case "POST": {
       try {
         const raw = await request.text();
         const data = JSON.parse(raw);
+        if ("slots" in data && typeof data.slots === "object") {
+          return badRequest("Plaintext slots are not allowed. Slots must be encrypted.");
+        }
         return data;
-      } catch {
-        return badRequest("Request format is invalid.");
+      } catch (e) {
+        if (e instanceof SyntaxError) {
+          return badRequest("Request format is invalid.");
+        }
+        throw e;
       }
     }
     default: {
@@ -170,13 +171,30 @@ function createEndpoint(manifest) {
     }
     const key = await manifest.key;
     const encryptedProps = data.encryptedProps;
-    const propString = encryptedProps === "" ? "{}" : await decryptString(key, encryptedProps);
-    const props = JSON.parse(propString);
+    let props = {};
+    if (encryptedProps !== "") {
+      try {
+        const propString = await decryptString(key, encryptedProps);
+        props = JSON.parse(propString);
+      } catch (_e) {
+        return badRequest("Encrypted props value is invalid.");
+      }
+    }
+    let decryptedSlots = {};
+    const encryptedSlots = data.encryptedSlots;
+    if (encryptedSlots !== "") {
+      try {
+        const slotsString = await decryptString(key, encryptedSlots);
+        decryptedSlots = JSON.parse(slotsString);
+      } catch (_e) {
+        return badRequest("Encrypted slots value is invalid.");
+      }
+    }
     const componentModule = await imp();
     let Component = componentModule[data.componentExport];
     const slots = {};
-    for (const prop in data.slots) {
-      slots[prop] = createSlotValueFromString(data.slots[prop]);
+    for (const prop in decryptedSlots) {
+      slots[prop] = createSlotValueFromString(decryptedSlots[prop]);
     }
     result.response.headers.set("X-Robots-Tag", "noindex");
     if (isAstroComponentFactory(Component)) {
@@ -1772,9 +1790,24 @@ function resolveSessionDriverName(driver) {
   return driver;
 }
 
+function validateAndDecodePathname(pathname) {
+  let decoded;
+  try {
+    decoded = decodeURI(pathname);
+  } catch (_e) {
+    throw new Error("Invalid URL encoding");
+  }
+  const hasDecoding = decoded !== pathname;
+  const decodedStillHasEncoding = /%[0-9a-fA-F]{2}/.test(decoded);
+  if (hasDecoding && decodedStillHasEncoding) {
+    throw new Error("Multi-level URL encoding is not allowed");
+  }
+  return decoded;
+}
+
 const apiContextRoutesSymbol = Symbol.for("context.routes");
 class RenderContext {
-  constructor(pipeline, locals, middleware, actions, pathname, request, routeData, status, clientAddress, cookies = new AstroCookies(request), params = getParams(routeData, pathname), url = new URL(request.url), props = {}, partial = void 0, shouldInjectCspMetaTags = !!pipeline.manifest.csp, session = pipeline.manifest.sessionConfig ? new AstroSession(cookies, pipeline.manifest.sessionConfig, pipeline.runtimeMode) : void 0) {
+  constructor(pipeline, locals, middleware, actions, pathname, request, routeData, status, clientAddress, cookies = new AstroCookies(request), params = getParams(routeData, pathname), url = RenderContext.#createNormalizedUrl(request.url), props = {}, partial = void 0, shouldInjectCspMetaTags = !!pipeline.manifest.csp, session = pipeline.manifest.sessionConfig ? new AstroSession(cookies, pipeline.manifest.sessionConfig, pipeline.runtimeMode) : void 0) {
     this.pipeline = pipeline;
     this.locals = locals;
     this.middleware = middleware;
@@ -1791,6 +1824,18 @@ class RenderContext {
     this.partial = partial;
     this.shouldInjectCspMetaTags = shouldInjectCspMetaTags;
     this.session = session;
+  }
+  static #createNormalizedUrl(requestUrl) {
+    const url = new URL(requestUrl);
+    try {
+      url.pathname = validateAndDecodePathname(url.pathname);
+    } catch {
+      try {
+        url.pathname = decodeURI(url.pathname);
+      } catch {
+      }
+    }
+    return url;
   }
   /**
    * A flag that tells the render content if the rewriting was triggered
@@ -1906,7 +1951,7 @@ class RenderContext {
           );
         }
         this.isRewriting = true;
-        this.url = new URL(this.request.url);
+        this.url = RenderContext.#createNormalizedUrl(this.request.url);
         this.params = getParams(routeData, pathname);
         this.pathname = pathname;
         this.status = 200;
@@ -2019,7 +2064,7 @@ class RenderContext {
         this.routeData.route
       );
     }
-    this.url = new URL(this.request.url);
+    this.url = RenderContext.#createNormalizedUrl(this.request.url);
     const newCookies = new AstroCookies(this.request);
     if (this.cookies) {
       newCookies.merge(this.cookies);
@@ -2449,7 +2494,7 @@ function defineAction({
   input: inputSchema,
   handler
 }) {
-  const serverHandler = getFormServerHandler(handler, inputSchema) ;
+  const serverHandler = getJsonServerHandler(handler, inputSchema);
   async function safeServerHandler(unparsedInput) {
     if (typeof this === "function" || !isActionAPIContext(this)) {
       throw new AstroError(ActionCalledFromServerError);
@@ -2466,83 +2511,21 @@ function defineAction({
   });
   return safeServerHandler;
 }
-function getFormServerHandler(handler, inputSchema) {
+function getJsonServerHandler(handler, inputSchema) {
   return async (unparsedInput, context) => {
-    if (!(unparsedInput instanceof FormData)) {
+    if (unparsedInput instanceof FormData) {
       throw new ActionError({
         code: "UNSUPPORTED_MEDIA_TYPE",
-        message: "This action only accepts FormData."
+        message: "This action only accepts JSON."
       });
     }
     if (!inputSchema) return await handler(unparsedInput, context);
-    const baseSchema = unwrapBaseObjectSchema(inputSchema, unparsedInput);
-    const parsed = await inputSchema.safeParseAsync(
-      baseSchema instanceof z.ZodObject ? formDataToObject(unparsedInput, baseSchema) : unparsedInput
-    );
+    const parsed = await inputSchema.safeParseAsync(unparsedInput);
     if (!parsed.success) {
       throw new ActionInputError(parsed.error.issues);
     }
     return await handler(parsed.data, context);
   };
-}
-function formDataToObject(formData, schema) {
-  const obj = schema._def.unknownKeys === "passthrough" ? Object.fromEntries(formData.entries()) : {};
-  for (const [key, baseValidator] of Object.entries(schema.shape)) {
-    let validator = baseValidator;
-    while (validator instanceof z.ZodOptional || validator instanceof z.ZodNullable || validator instanceof z.ZodDefault) {
-      if (validator instanceof z.ZodDefault && !formData.has(key)) {
-        obj[key] = validator._def.defaultValue();
-      }
-      validator = validator._def.innerType;
-    }
-    if (!formData.has(key) && key in obj) {
-      continue;
-    } else if (validator instanceof z.ZodBoolean) {
-      const val = formData.get(key);
-      obj[key] = val === "true" ? true : val === "false" ? false : formData.has(key);
-    } else if (validator instanceof z.ZodArray) {
-      obj[key] = handleFormDataGetAll(key, formData, validator);
-    } else {
-      obj[key] = handleFormDataGet(key, formData, validator, baseValidator);
-    }
-  }
-  return obj;
-}
-function handleFormDataGetAll(key, formData, validator) {
-  const entries = Array.from(formData.getAll(key));
-  const elementValidator = validator._def.type;
-  if (elementValidator instanceof z.ZodNumber) {
-    return entries.map(Number);
-  } else if (elementValidator instanceof z.ZodBoolean) {
-    return entries.map(Boolean);
-  }
-  return entries;
-}
-function handleFormDataGet(key, formData, validator, baseValidator) {
-  const value = formData.get(key);
-  if (!value) {
-    return baseValidator instanceof z.ZodOptional ? void 0 : null;
-  }
-  return validator instanceof z.ZodNumber ? Number(value) : value;
-}
-function unwrapBaseObjectSchema(schema, unparsedInput) {
-  while (schema instanceof z.ZodEffects || schema instanceof z.ZodPipeline) {
-    if (schema instanceof z.ZodEffects) {
-      schema = schema._def.schema;
-    }
-    if (schema instanceof z.ZodPipeline) {
-      schema = schema._def.in;
-    }
-  }
-  if (schema instanceof z.ZodDiscriminatedUnion) {
-    const typeKey = schema._def.discriminator;
-    const typeValue = unparsedInput.get(typeKey);
-    if (typeof typeValue !== "string") return schema;
-    const objSchema = schema._def.optionsMap.get(typeValue);
-    if (!objSchema) return schema;
-    return objSchema;
-  }
-  return schema;
 }
 function getActionContext(context) {
   const callerInfo = getCallerInfo(context);
@@ -2627,4 +2610,4 @@ async function parseRequestBody(request) {
   throw new TypeError("Unsupported content type");
 }
 
-export { PERSIST_SYMBOL as P, RouteCache as R, SERVER_ISLAND_COMPONENT as S, redirectToFallback as a, redirectToDefaultLocale as b, requestHasLocale as c, defineAction as d, normalizeTheLocale as e, defineMiddleware as f, getActionContext as g, SERVER_ISLAND_ROUTE as h, isRequestServerIsland as i, createEndpoint as j, findRouteToRewrite as k, RenderContext as l, matchRoute as m, notFound as n, getSetCookiesFromResponse as o, requestIs404Or500 as r, sequence as s };
+export { PERSIST_SYMBOL as P, RouteCache as R, SERVER_ISLAND_COMPONENT as S, redirectToFallback as a, redirectToDefaultLocale as b, requestHasLocale as c, defineAction as d, normalizeTheLocale as e, defineMiddleware as f, getActionContext as g, SERVER_ISLAND_ROUTE as h, isRequestServerIsland as i, createEndpoint as j, findRouteToRewrite as k, RenderContext as l, matchRoute as m, notFound as n, getSetCookiesFromResponse as o, requestIs404Or500 as r, sequence as s, validateAndDecodePathname as v };

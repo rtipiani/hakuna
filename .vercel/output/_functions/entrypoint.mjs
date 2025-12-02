@@ -1,23 +1,25 @@
-import './chunks/virtual_BXSI0rNn.mjs';
+import './chunks/virtual_B0SgGv2A.mjs';
+import * as z from 'zod';
 import { Resend } from 'resend';
-import { z } from 'zod';
-import { d as defineAction } from './chunks/server_C6oVW338.mjs';
-import { A as ActionError } from './chunks/astro-designed-error-pages_WngsdbV7.mjs';
+import { d as defineAction } from './chunks/server_BRRsNqos.mjs';
+import { A as ActionError } from './chunks/astro-designed-error-pages_BNwg5yew.mjs';
 
 const resend = new Resend("re_JKoRvM3Z_L8FXdTk7yjZotq2CgbZDrWGi");
 const server = {
   send: defineAction({
-    accept: "form",
+    accept: "json",
     input: z.object({
-      name: z.string(),
-      email: z.string().email(),
-      message: z.string()
+      name: z.string().min(1, "El nombre es requerido"),
+      email: z.string().email("Email inválido"),
+      message: z.string().min(1, "El mensaje es requerido")
     }),
     handler: async ({ name, email, message }) => {
       const { data, error } = await resend.emails.send({
-        from: "Consultas <no-reply@gmail.com>",
-        to: ["rtipiani@gmail.com"],
+        from: "Acme <onboarding@resend.dev>",
+        to: ["delivered@resend.dev"],
         subject: `Nuevo mensaje de ${name}`,
+        replyTo: email,
+        // ← Corregido a camelCase
         html: `
                     <h2>Nueva consulta desde la web</h2>
                     <p><strong>Nombre:</strong> ${name}</p>
@@ -32,7 +34,7 @@ const server = {
           message: error.message
         });
       }
-      return data;
+      return { success: true, data };
     }
   })
 };
