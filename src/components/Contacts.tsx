@@ -1,11 +1,13 @@
-import { server } from "astro:actions";
+import { useAction } from "astro:actions";
+import { server } from "../actions";
 
-export default function Contactanos() {
+export default function Contacts() {
+  const send = useAction(server.send);
+
   return (
     <section className="w-full py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800">
           Contáctanos
         </h2>
 
@@ -15,64 +17,80 @@ export default function Contactanos() {
 
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-3xl mx-auto">
 
-          {/* FORMULARIO REAL USANDO ASTRO ACTION */}
-          <form 
-            method="post"
-            action={server.send}
-            className="space-y-6"
-          >
+          <form onSubmit={send} className="space-y-6">
 
+            {/* NOMBRE */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-2" htmlFor="name">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-semibold mb-2"
+              >
                 Nombre
               </label>
               <input
-                type="text"
                 id="name"
+                type="text"
                 name="name"
-                placeholder="Tu nombre completo"
+                placeholder="Tu nombre"
                 required
-                minLength={2}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300"
               />
             </div>
 
+            {/* EMAIL */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-2" htmlFor="email">
-                Correo electrónico
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-semibold mb-2"
+              >
+                Correo
               </label>
               <input
-                type="email"
                 id="email"
+                type="email"
                 name="email"
                 placeholder="ejemplo@correo.com"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300"
               />
             </div>
 
+            {/* MENSAJE */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-2" htmlFor="message">
+              <label
+                htmlFor="message"
+                className="block text-gray-700 font-semibold mb-2"
+              >
                 Mensaje
               </label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="Escribe tu mensaje aquí..."
-                required
-                minLength={10}
+                placeholder="Escribe tu mensaje..."
                 rows={5}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 resize-none"
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 resize-none"
               ></textarea>
             </div>
 
+            {/* BOTÓN */}
             <button
               type="submit"
-              className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:bg-red-500 transition-all transform hover:scale-[1.02]"
+              disabled={send.loading}
+              className="w-full bg-red-600 text-white font-bold py-3 rounded-xl"
             >
-              Enviar Mensaje
+              {send.loading ? "Enviando..." : "Enviar mensaje"}
             </button>
 
+            {send.error && (
+              <p className="text-red-600 mt-3">{send.error.message}</p>
+            )}
+
+            {send.data?.success && (
+              <p className="text-green-600 mt-3">
+                ¡Mensaje enviado correctamente!
+              </p>
+            )}
           </form>
 
         </div>
