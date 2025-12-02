@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 import { d as defineAction } from './chunks/server_BRRsNqos.mjs';
 import { A as ActionError } from './chunks/astro-designed-error-pages_BNwg5yew.mjs';
 
-const resend = new Resend("re_JKoRvM3Z_L8FXdTk7yjZotq2CgbZDrWGi");
+const resend = new Resend("re_M4dNg3J2_Deq3pCvv3PkiJEFvWYJTQC9a");
 const server = {
   send: defineAction({
     accept: "json",
@@ -16,7 +16,7 @@ const server = {
     handler: async ({ name, email, message }) => {
       const { data, error } = await resend.emails.send({
         from: "Acme <onboarding@resend.dev>",
-        to: ["delivered@resend.dev"],
+        to: ["ventas@angeladventure.pe"],
         subject: `Nuevo mensaje de ${name}`,
         replyTo: email,
         // ← Corregido a camelCase

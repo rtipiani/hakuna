@@ -1,4 +1,3 @@
-// src/actions/index.ts
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { Resend } from "resend";
@@ -9,23 +8,19 @@ export const server = {
     send: defineAction({
         accept: "json",
         input: z.object({
-            name: z.string().min(1, "El nombre es requerido"),
-            email: z.string().email("Email inválido"),
-            message: z.string().min(1, "El mensaje es requerido"),
+            name: z.string(),
+            email: z.string().email(),
+            message: z.string(),
         }),
-        handler: async ({ name, email, message }) => {
+        handler: async (input) => {
             const { data, error } = await resend.emails.send({
-                from: "Acme <onboarding@resend.dev>",
-                to: ["delivered@resend.dev"],
-                subject: `Nuevo mensaje de ${name}`,
-                replyTo: email, // ← Corregido a camelCase
-                html: `
-                    <h2>Nueva consulta desde la web</h2>
-                    <p><strong>Nombre:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
-                    <p><strong>Mensaje:</strong></p>
-                    <p>${message}</p>
-                `,
+                from: import.meta.env.CONTACT_EMAIL_FROM,
+                to: import.meta.env.CONTACT_EMAIL_TO,
+                replyTo: input.email,
+                subject: `New message from ${input.name}`,
+                html: `<p><strong>Name:</strong> ${input.name}</p>
+                       <p><strong>Email:</strong> ${input.email}</p>
+                       <p><strong>Message:</strong> ${input.message}</p>`,
             });
 
             if (error) {

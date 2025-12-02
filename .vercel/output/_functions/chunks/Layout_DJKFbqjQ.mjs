@@ -1,7 +1,7 @@
 import { e as createComponent, r as renderTemplate, k as renderComponent, l as renderSlot, n as renderHead } from './astro/server_ByyNhJnE.mjs';
 import 'piccolore';
 import { jsxs, jsx } from 'react/jsx-runtime';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 /* empty css                               */
 
 const logo = new Proxy({"src":"/_astro/logo.DjeQ78vG.webp","width":1532,"height":568,"format":"webp"}, {
@@ -135,15 +135,11 @@ const Navbar = () => {
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [activePath, setActivePath] = useState("/");
-  const dropdownTimeout = React.useRef(null);
   const openDropdown = () => {
-    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
     setDesktopDropdownOpen(true);
   };
   const closeDropdown = () => {
-    dropdownTimeout.current = setTimeout(() => {
-      setDesktopDropdownOpen(false);
-    }, 150);
+    setDesktopDropdownOpen(false);
   };
   useEffect(() => {
     setActivePath(window.location.pathname);
@@ -163,7 +159,7 @@ const Navbar = () => {
         (item, i) => item.dropdown ? /* @__PURE__ */ jsxs(
           "li",
           {
-            className: "relative",
+            className: "relative group",
             onMouseEnter: openDropdown,
             onMouseLeave: closeDropdown,
             children: [
@@ -182,6 +178,7 @@ const Navbar = () => {
                   className: `
                     absolute left-0 mt-3 w-48 bg-white shadow-xl rounded-lg py-2 text-orange-800
                     border border-orange-200/50 transition-all duration-200 origin-top z-50
+                    before:absolute before:-top-3 before:left-0 before:w-full before:h-3 before:content-[''] 
                     ${desktopDropdownOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 pointer-events-none"}
                   `,
                   children: item.dropdown.map((d, idx) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
@@ -283,7 +280,7 @@ var __defProp = Object.defineProperty;
 var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
 var _a;
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate(_a || (_a = __template(['<html lang="es"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Angel Aventura Tours | Operador Tur\xEDstico Calificado Por MINCETUR</title><meta name="description" content="Somos una empresa especializada en brindar servicios tur\xEDsticos en la selva central del Per\xFA con m\xE1s de 17 a\xF1os de experiencia y tenemos como fin promover nuestra cultura, gastronom\xEDa y el cuidado del medio ambiente."><meta name="language" content="es-PE"><meta name="geo.region" content="PE"><meta name="geo.placename" content="Oxapampa, Chanchamayo, Selva Central"><meta property="og:title" content="Angel Aventura Tours | Operador Tur\xEDstico Calificado Por MINCETUR"><meta property="og:description" content="Especialistas en turismo por la Selva Central del Per\xFA: Oxapampa, Chanchamayo y m\xE1s, con m\xE1s de 17 a\xF1os de experiencia."><meta property="og:image" content="/og-image.jpg"><meta property="og:url" content="https://tudominio.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Angel Aventura Tours"><meta name="twitter:description" content="Especialistas en turismo por la Selva Central del Per\xFA: Oxapampa, Chanchamayo y m\xE1s."><meta name="twitter:image" content="/og-image.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://tudominio.com"><script type="application/ld+json">\n			{\n				"@context": "https://schema.org",\n				"@type": "TravelAgency",\n				"name": "Angel Aventura Tours",\n				"url": "https://tudominio.com",\n				"logo": "https://tudominio.com/logo.png",\n				"image": "https://tudominio.com/og-image.jpg",\n				"description": "Operador tur\xEDstico con m\xE1s de 17 a\xF1os de experiencia en la Selva Central del Per\xFA.",\n				"address": {\n					"@type": "PostalAddress",\n					"addressCountry": "PE",\n					"addressRegion": "Jun\xEDn",\n					"addressLocality": "Chanchamayo"\n				},\n				"sameAs": [\n					"https://facebook.com/tu_pagina",\n					"https://instagram.com/tu_pagina"\n				]\n			}\n		<\/script>', "</head> <body> ", " ", " ", " ", ' <a href="https://wa.me/51964534249?text=Hola%20%C3%81ngel%20Aventura%20Tours%2C%20estoy%20interesad%40%20en%20conocer%20Oxapampa%20%F0%9F%8C%B8%2C%20Chanchamayo%20%F0%9F%8C%B4%20y%20toda%20la%20Selva%20Central%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"> <i class="fa-brands fa-whatsapp text-3xl"></i> </a> </body></html>'])), renderHead(), renderComponent($$result, "TopHeader", TopHeader, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/TopHeader.tsx", "client:component-export": "default" }), renderComponent($$result, "Navbar", Navbar, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Navbar.tsx", "client:component-export": "default" }), renderSlot($$result, $$slots["default"]), renderComponent($$result, "Footer", Footer, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Footer", "client:component-export": "default" }));
+  return renderTemplate(_a || (_a = __template(['<html lang="es"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>\n			Angel Aventura Tours | Operador Tur\xEDstico Calificado Por MINCETUR\n		</title><meta name="description" content="Somos una empresa especializada en brindar servicios tur\xEDsticos en la selva central del Per\xFA con m\xE1s de 17 a\xF1os de experiencia y tenemos como fin promover nuestra cultura, gastronom\xEDa y el cuidado del medio ambiente."><meta name="language" content="es-PE"><meta name="geo.region" content="PE"><meta name="geo.placename" content="Oxapampa, Chanchamayo, Selva Central"><meta property="og:title" content="Angel Aventura Tours | Operador Tur\xEDstico Calificado Por MINCETUR"><meta property="og:description" content="Especialistas en turismo por la Selva Central del Per\xFA: Oxapampa, Chanchamayo y m\xE1s, con m\xE1s de 17 a\xF1os de experiencia."><meta property="og:image" content="/og-image.jpg"><meta property="og:url" content="https://angelaventuratours.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Angel Aventura Tours"><meta name="twitter:description" content="Especialistas en turismo por la Selva Central del Per\xFA: Oxapampa, Chanchamayo y m\xE1s."><meta name="twitter:image" content="/og-image.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://angelaventuratours.com"><script type="application/ld+json">\n			{\n				"@context": "https://schema.org",\n				"@type": "TravelAgency",\n				"name": "Angel Aventura Tours",\n				"url": "https://angelaventuratours.com",\n				"logo": "https://angelaventuratours.com/logo.png",\n				"image": "https://angelaventuratours.com/og-image.jpg",\n				"description": "Operador tur\xEDstico con m\xE1s de 17 a\xF1os de experiencia en la Selva Central del Per\xFA.",\n				"address": {\n					"@type": "PostalAddress",\n					"addressCountry": "PE",\n					"addressRegion": "Jun\xEDn",\n					"addressLocality": "Chanchamayo"\n				},\n				"sameAs": [\n					"https://www.facebook.com/Angelaventuraturismochanc/",\n					"https://www.instagram.com/p/DRU4YTCCc5o/"\n				]\n			}\n		<\/script>', "</head> <body> ", " ", " ", " ", ' <a href="https://wa.me/51964534249?text=Hola%20%C3%81ngel%20Aventura%20Tours%2C%20estoy%20interesad%40%20en%20conocer%20Oxapampa%20%F0%9F%8C%B8%2C%20Chanchamayo%20%F0%9F%8C%B4%20y%20toda%20la%20Selva%20Central%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"> <i class="fa-brands fa-whatsapp text-3xl"></i> </a> </body></html>'])), renderHead(), renderComponent($$result, "TopHeader", TopHeader, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/TopHeader.tsx", "client:component-export": "default" }), renderComponent($$result, "Navbar", Navbar, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Navbar.tsx", "client:component-export": "default" }), renderSlot($$result, $$slots["default"]), renderComponent($$result, "Footer", Footer, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Footer", "client:component-export": "default" }));
 }, "D:/Vercel/angelaventuratours/src/layouts/Layout.astro", void 0);
 
 export { $$Layout as $ };

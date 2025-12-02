@@ -3,7 +3,7 @@ import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { a as actions } from '../chunks/virtual_B0SgGv2A.mjs';
 import { useState } from 'react';
-import { $ as $$Layout } from '../chunks/Layout_D-TsT2wc.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DJKFbqjQ.mjs';
 export { renderers } from '../renderers.mjs';
 
 function Contactanos() {

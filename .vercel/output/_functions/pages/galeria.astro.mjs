@@ -2,7 +2,7 @@ import { e as createComponent, k as renderComponent, r as renderTemplate } from 
 import 'piccolore';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState } from 'react';
-import { $ as $$Layout } from '../chunks/Layout_D-TsT2wc.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DJKFbqjQ.mjs';
 export { renderers } from '../renderers.mjs';
 
 const img1 = new Proxy({"src":"/_astro/villarica-1.BpiSo6u2.png","width":1200,"height":800,"format":"png"}, {

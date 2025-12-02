@@ -1,7 +1,7 @@
 import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
 import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
-import { $ as $$Layout } from '../chunks/Layout_D-TsT2wc.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DJKFbqjQ.mjs';
 export { renderers } from '../renderers.mjs';
 
 function Politicas() {
