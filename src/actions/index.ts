@@ -7,7 +7,7 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const server = {
     send: defineAction({
-        accept: "json", // Cambiado a json
+        accept: "json",
         input: z.object({
             name: z.string().min(1, "El nombre es requerido"),
             email: z.string().email("Email inválido"),

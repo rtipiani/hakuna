@@ -20,12 +20,13 @@ export default function Contactanos() {
       });
 
       if (result.error) {
-        setMessage("Error al enviar el mensaje. Intenta nuevamente.");
+        setMessage(`Error: ${result.error.message}`);
       } else {
         setMessage("¡Mensaje enviado exitosamente!");
         e.currentTarget.reset();
       }
     } catch (error) {
+      console.error("Error al enviar:", error);
       setMessage("Error al enviar el mensaje. Intenta nuevamente.");
     } finally {
       setLoading(false);

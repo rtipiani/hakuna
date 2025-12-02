@@ -5,7 +5,8 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  adapter: vercel({}),
+  output: 'server', // ← Agrega esta línea
+  adapter: vercel(),
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
