@@ -1,8 +1,8 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useRef, useEffect } from 'react';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 import { p as perene, o as oxapampa, v as villaRica, a as pozuzo, b as puenteKimiri, c as chanchamayo, l as laFortuna } from '../chunks/la-fortuna_C1m9C7LR.mjs';
 export { renderers } from '../renderers.mjs';
 
@@ -48,21 +48,21 @@ const slide3 = new Proxy({"src":"/_astro/slide3.C6AoFycJ.png","width":1920,"heig
 const slides = [
   {
     src: slide1.src,
-    alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+    alt: "Catarata en Chanchamayo, Selva Central del Perú, rodeada de abundante vegetación.",
     title: "Chanchamayo",
     description: "Sumérgete en la selva central, entre cataratas, café y la calidez de su gente.",
     whatsappLink: "https://wa.link/okkl9y"
   },
   {
     src: slide2.src,
-    alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+    alt: "Paisaje natural de Oxapampa con montañas y bosques nubosos.",
     title: "Oxapampa",
     description: "Vive la armonía entre montañas, tradiciones austro-alemanas y naturaleza pura.",
     whatsappLink: "https://wa.link/b6g8ba"
   },
   {
     src: slide3.src,
-    alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+    alt: "Arquitectura típica austro-alemana en el pueblo de Pozuzo.",
     title: "Pozuzo",
     description: "Descubre el encanto del primer pueblo austro-alemán del Perú, rodeado de verdes valles.",
     whatsappLink: "https://wa.link/wlb78h"
@@ -108,7 +108,7 @@ const Slider = () => {
         }
       ),
       /* @__PURE__ */ jsxs("div", { className: "absolute inset-0 bg-black/45 flex flex-col justify-center items-center text-center px-4 md:px-8 lg:px-12 text-white", children: [
-        /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-6xl md:text-7xl font-semibold leading-tight tracking-wide mb-1", children: slide.title }),
+        /* @__PURE__ */ jsx("h2", { className: "text-3xl sm:text-6xl md:text-7xl font-semibold leading-tight tracking-wide mb-1", children: slide.title }),
         /* @__PURE__ */ jsx("p", { className: "text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-3 max-w-[90%] lg:max-w-[70%]", children: slide.description }),
         /* @__PURE__ */ jsxs(
           "a",
@@ -227,7 +227,7 @@ const Recomendation = () => {
       const message = `¡Hola! Angel Aventura Tours. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
       const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
       return /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-lg shadow-md", children: [
-        /* @__PURE__ */ jsx("img", { src: tour.image.src, alt: tour.title, className: "w-full h-56 object-cover rounded-t-lg" }),
+        /* @__PURE__ */ jsx("img", { src: tour.image.src, alt: tour.title, loading: "lazy", className: "w-full h-56 object-cover rounded-t-lg" }),
         /* @__PURE__ */ jsxs("div", { className: "p-6", children: [
           /* @__PURE__ */ jsx("h3", { className: "text-xl font-semibold mb-2", children: tour.title }),
           /* @__PURE__ */ jsx("p", { className: "font-medium mb-2", children: tour.days }),
@@ -236,7 +236,7 @@ const Recomendation = () => {
             tour.price
           ] }),
           /* @__PURE__ */ jsx("p", { className: "font-light mb-4", children: tour.description }),
-          /* @__PURE__ */ jsx("a", { href: waLink, target: "_blank", className: "inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600", children: "Consultar ahora" })
+          /* @__PURE__ */ jsx("a", { href: waLink, target: "_blank", rel: "noopener noreferrer", className: "inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600", children: "Consultar ahora" })
         ] })
       ] }, index);
     }) })
@@ -299,10 +299,10 @@ const NuestrosSocios = () => {
   return /* @__PURE__ */ jsx("section", { className: "py-16 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto text-center px-4", children: [
     /* @__PURE__ */ jsx("h2", { className: "text-3xl md:text-4xl font-semibold mb-10", children: "Socios Estratégicos" }),
     /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center", children: [
-      /* @__PURE__ */ jsx("img", { src: socio1.src, alt: "Mincetur", className: "w-full max-h-24 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: socio2.src, alt: "PromPerú", className: "w-full max-h-24 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: socio3.src, alt: "Dircetur Junin", className: "w-full max-h-24 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: socio4.src, alt: "Y tú que planes?", className: "w-full max-h-24 object-contain" })
+      /* @__PURE__ */ jsx("img", { src: socio1.src, alt: "Mincetur", loading: "lazy", className: "w-full max-h-24 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: socio2.src, alt: "PromPerú", loading: "lazy", className: "w-full max-h-24 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: socio3.src, alt: "Dircetur Junin", loading: "lazy", className: "w-full max-h-24 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: socio4.src, alt: "Y tú que planes?", loading: "lazy", className: "w-full max-h-24 object-contain" })
     ] })
   ] }) });
 };
@@ -390,18 +390,18 @@ const MediosDePago = () => {
     /* @__PURE__ */ jsx("h2", { className: "text-3xl md:text-4xl font-semibold mb-10", children: "Medios de Pago" }),
     /* @__PURE__ */ jsx("p", { className: "text-gray-600 mb-10", children: "Aceptamos los principales métodos de pago para tu comodidad." }),
     /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-2 md:grid-cols-6 gap-10 items-center justify-center", children: [
-      /* @__PURE__ */ jsx("img", { src: visa.src, alt: "Visa", className: "w-full max-h-20 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: mastercard.src, alt: "Mastercard", className: "w-full max-h-20 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: yape.src, alt: "Yape", className: "w-full max-h-20 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: plin.src, alt: "Plin", className: "w-full max-h-20 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: wester.src, alt: "Plin", className: "w-full max-h-20 object-contain" }),
-      /* @__PURE__ */ jsx("img", { src: paypal.src, alt: "Paypal", className: "w-full max-h-20 object-contain" })
+      /* @__PURE__ */ jsx("img", { src: visa.src, alt: "Visa", loading: "lazy", className: "w-full max-h-20 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: mastercard.src, alt: "Mastercard", loading: "lazy", className: "w-full max-h-20 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: yape.src, alt: "Yape", loading: "lazy", className: "w-full max-h-20 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: plin.src, alt: "Plin", loading: "lazy", className: "w-full max-h-20 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: wester.src, alt: "Western Union", loading: "lazy", className: "w-full max-h-20 object-contain" }),
+      /* @__PURE__ */ jsx("img", { src: paypal.src, alt: "Paypal", loading: "lazy", className: "w-full max-h-20 object-contain" })
     ] })
   ] }) });
 };
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Slider", Slider, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Slider", "client:component-export": "default" })} ${renderComponent($$result2, "Recomendation", Recomendation, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Recomendation", "client:component-export": "default" })} ${renderComponent($$result2, "Socios", NuestrosSocios, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Socios", "client:component-export": "default" })} ${renderComponent($$result2, "Pagos", MediosDePago, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Pagos", "client:component-export": "default" })} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Angel Aventura Tours | Operador Tur\xEDstico en Selva Central | Chanchamayo y Oxapampa", "description": "Especialistas en turismo por la Selva Central del Per\xFA con m\xE1s de 17 a\xF1os de experiencia. Descubre Chanchamayo, Oxapampa y Pozuzo con nosotros." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> <h1 class="sr-only">Angel Aventura Tours - Operador de Turismo en la Selva Central del Perú</h1> ${renderComponent($$result2, "Slider", Slider, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Slider", "client:component-export": "default" })} ${renderComponent($$result2, "Recomendation", Recomendation, {})} ${renderComponent($$result2, "Socios", NuestrosSocios, {})} ${renderComponent($$result2, "Pagos", MediosDePago, {})} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/index.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/index.astro";

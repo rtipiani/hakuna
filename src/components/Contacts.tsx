@@ -1,30 +1,44 @@
-import { useAction } from "astro:actions";
-import { server } from "../actions";
+import { actions } from "astro:actions";
+import { useState, useTransition } from "react";
 
 export default function Contacts() {
-  const send = useAction(server.send);
+  const [isPending, startTransition] = useTransition();
+  const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    startTransition(async () => {
+      const { data, error } = await actions.send(formData);
+      if (error) {
+        setErrorMsg(error.message);
+        setSuccess(false);
+      } else {
+        setSuccess(true);
+        setErrorMsg("");
+        (e.target as HTMLFormElement).reset();
+      }
+    });
+  };
 
   return (
     <section className="w-full py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800">
           Contáctanos
-        </h2>
+        </h1>
 
         <p className="text-center text-gray-600 mt-3 mb-12 text-lg md:text-xl">
           Escríbenos y te responderemos a la brevedad.
         </p>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-3xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6">
 
-          <form onSubmit={send} className="space-y-6">
-
-            {/* NOMBRE */}
             <div>
-              <label
-                htmlFor="name"
-                className="block text-gray-700 font-semibold mb-2"
-              >
+              <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
                 Nombre
               </label>
               <input
@@ -37,12 +51,8 @@ export default function Contacts() {
               />
             </div>
 
-            {/* EMAIL */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-gray-700 font-semibold mb-2"
-              >
+              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                 Correo
               </label>
               <input
@@ -55,12 +65,8 @@ export default function Contacts() {
               />
             </div>
 
-            {/* MENSAJE */}
             <div>
-              <label
-                htmlFor="message"
-                className="block text-gray-700 font-semibold mb-2"
-              >
+              <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
                 Mensaje
               </label>
               <textarea
@@ -73,28 +79,28 @@ export default function Contacts() {
               ></textarea>
             </div>
 
-            {/* BOTÓN */}
             <button
               type="submit"
-              disabled={send.loading}
-              className="w-full bg-red-600 text-white font-bold py-3 rounded-xl"
+              disabled={isPending}
+              className="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition disabled:opacity-60"
             >
-              {send.loading ? "Enviando..." : "Enviar mensaje"}
+              {isPending ? "Enviando..." : "Enviar mensaje"}
             </button>
 
-            {send.error && (
-              <p className="text-red-600 mt-3">{send.error.message}</p>
+            {errorMsg && (
+              <p className="text-red-600 mt-3">{errorMsg}</p>
             )}
 
-            {send.data?.success && (
+            {success && (
               <p className="text-green-600 mt-3">
                 ¡Mensaje enviado correctamente!
               </p>
             )}
           </form>
-
         </div>
       </div>
     </section>
   );
 }
+
+

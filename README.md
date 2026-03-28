@@ -93,4 +93,4 @@ Este proyecto está optimizado para desplegarse en Vercel:
 
 ## 📞 Contacto
 
-Para más información, visita [angelaventuratours.com](https://angelaventuratours.com) o contacta a rtipiani@gmail.com
+Para más información, visita [angelaventurachanchamayo.com](https://www.angelaventurachanchamayo.com) o contacta a rtipiani@gmail.com

@@ -3,6 +3,23 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar.tsx";
 import TopHeader from "../components/TopHeader.tsx";
 import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonicalUrl?: string;
+	ogImage?: string;
+}
+
+const { 
+	title = "Angel Aventura Tours | Operador Turístico Calificado Por MINCETUR",
+	description = "Somos una empresa especializada en brindar servicios turísticos en la selva central del Perú con más de 17 años de experiencia y tenemos como fin promover nuestra cultura, gastronomía y el cuidado del medio ambiente.",
+	canonicalUrl = Astro.url.href,
+	ogImage = "/og-image.png"
+} = Astro.props;
+
+const siteUrl = "https://www.angelaventurachanchamayo.com";
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -10,71 +27,58 @@ import "../styles/global.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>
-			Angel Aventura Tours | Operador Turístico Calificado Por MINCETUR
-		</title>
-		<meta
-			name="description"
-			content="Somos una empresa especializada en brindar servicios turísticos en la selva central del Perú con más de 17 años de experiencia y tenemos como fin promover nuestra cultura, gastronomía y el cuidado del medio ambiente."
-		/>
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		<meta name="language" content="es-PE" />
 		<meta name="geo.region" content="PE" />
 		<meta name="geo.placename" content="Oxapampa, Chanchamayo, Selva Central" />
 
-		<meta
-			property="og:title"
-			content="Angel Aventura Tours | Operador Turístico Calificado Por MINCETUR"
-		/>
-		<meta
-			property="og:description"
-			content="Especialistas en turismo por la Selva Central del Perú: Oxapampa, Chanchamayo y más, con más de 17 años de experiencia."
-		/>
-		<meta property="og:image" content="/og-image.jpg" />
-		<meta property="og:url" content="https://angelaventuratours.com" />
+		<!-- Open Graph / Facebook -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullOgImage} />
+		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:type" content="website" />
 
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Angel Aventura Tours" />
-		<meta
-			name="twitter:description"
-			content="Especialistas en turismo por la Selva Central del Perú: Oxapampa, Chanchamayo y más."
-		/>
-		<meta name="twitter:image" content="/og-image.jpg" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullOgImage} />
 
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 
-		<link rel="canonical" href="https://angelaventuratours.com" />
+		<link rel="canonical" href={canonicalUrl} />
 
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "TravelAgency",
-				"name": "Angel Aventura Tours",
-				"url": "https://angelaventuratours.com",
-				"logo": "https://angelaventuratours.com/logo.png",
-				"image": "https://angelaventuratours.com/og-image.jpg",
-				"description": "Operador turístico con más de 17 años de experiencia en la Selva Central del Perú.",
-				"address": {
-					"@type": "PostalAddress",
-					"addressCountry": "PE",
-					"addressRegion": "Junín",
-					"addressLocality": "Chanchamayo"
-				},
-				"sameAs": [
-					"https://www.facebook.com/Angelaventuraturismochanc/",
-					"https://www.instagram.com/p/DRU4YTCCc5o/"
-				]
-			}
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "TravelAgency",
+			"name": "Angel Aventura Tours",
+			"url": siteUrl,
+			"logo": `${siteUrl}/logo.png`,
+			"image": fullOgImage,
+			"description": description,
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "PE",
+				"addressRegion": "Junín",
+				"addressLocality": "Chanchamayo"
+			},
+			"sameAs": [
+				"https://www.facebook.com/Angelaventuraturismochanc/",
+				"https://www.instagram.com/p/DRU4YTCCc5o/"
+			]
+		})}>
 		</script>
 	</head>
 	<body>
-		<TopHeader client:load />
+		<TopHeader />
 		<Navbar client:load />
 		<slot />
-		<Footer client:load />
+		<Footer />
 		<a
 			href="https://wa.me/51964534249?text=Hola%20%C3%81ngel%20Aventura%20Tours%2C%20estoy%20interesad%40%20en%20conocer%20Oxapampa%20%F0%9F%8C%B8%2C%20Chanchamayo%20%F0%9F%8C%B4%20y%20toda%20la%20Selva%20Central%20%F0%9F%8C%BF"
 			target="_blank"

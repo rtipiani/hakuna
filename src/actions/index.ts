@@ -1,3 +1,4 @@
+// @ts-ignore
 import { defineAction, ActionError } from "astro:actions";
 import nodemailer from "nodemailer";
 

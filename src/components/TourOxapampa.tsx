@@ -73,9 +73,9 @@ const Recomendation = () => {
     return (
         <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
+                <h1 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
                     Tours <br /> Oxapampa
-                </h2>
+                </h1>
 
                 {/* Cards */}
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -89,6 +89,7 @@ const Recomendation = () => {
                                 <img
                                     src={tour.image.src}
                                     alt={tour.title}
+                                    loading="lazy"
                                     className="w-full h-56 object-cover rounded-t-lg"
                                 />
 
@@ -114,6 +115,7 @@ const Recomendation = () => {
                                     <a
                                         href={waLink}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600"
                                     >
                                         Consultar ahora
@@ -134,6 +136,7 @@ const Recomendation = () => {
                             key={index}
                             src={img.src}
                             alt={`Galería ${index}`}
+                            loading="lazy"
                             className="h-32 w-full object-cover rounded-lg shadow-sm hover:scale-105 transition-transform cursor-pointer"
                         />
                     ))}

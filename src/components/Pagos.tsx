@@ -19,12 +19,12 @@ const MediosDePago = () => {
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-10 items-center justify-center">
-                    <img src={visa.src} alt="Visa" className="w-full max-h-20 object-contain" />
-                    <img src={mastercard.src} alt="Mastercard" className="w-full max-h-20 object-contain" />
-                    <img src={yape.src} alt="Yape" className="w-full max-h-20 object-contain" />
-                    <img src={plin.src} alt="Plin" className="w-full max-h-20 object-contain" />
-                    <img src={wester.src} alt="Plin" className="w-full max-h-20 object-contain" />
-                    <img src={paypal.src} alt="Paypal" className="w-full max-h-20 object-contain" />
+                    <img src={visa.src} alt="Visa" loading="lazy" className="w-full max-h-20 object-contain" />
+                    <img src={mastercard.src} alt="Mastercard" loading="lazy" className="w-full max-h-20 object-contain" />
+                    <img src={yape.src} alt="Yape" loading="lazy" className="w-full max-h-20 object-contain" />
+                    <img src={plin.src} alt="Plin" loading="lazy" className="w-full max-h-20 object-contain" />
+                    <img src={wester.src} alt="Western Union" loading="lazy" className="w-full max-h-20 object-contain" />
+                    <img src={paypal.src} alt="Paypal" loading="lazy" className="w-full max-h-20 object-contain" />
                 </div>
 
             </div>

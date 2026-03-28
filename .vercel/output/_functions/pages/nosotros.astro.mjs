@@ -1,6 +1,6 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 import { jsx, jsxs } from 'react/jsx-runtime';
 export { renderers } from '../renderers.mjs';
 
@@ -153,6 +153,7 @@ function Certificacion() {
         {
           src: cert1.src,
           alt: "Certificación 1",
+          loading: "lazy",
           className: "w-full h-auto object-contain rounded-lg"
         }
       ) }),
@@ -161,6 +162,7 @@ function Certificacion() {
         {
           src: cert2.src,
           alt: "Certificación 2",
+          loading: "lazy",
           className: "w-full h-auto object-contain rounded-lg"
         }
       ) })
@@ -228,8 +230,8 @@ function MediosPago() {
       /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-2xl shadow-xl border border-gray-200 p-10 relative", children: [
         /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-full h-2 bg-linear-to-r from-red-700 to-red-500 rounded-t-2xl" }),
         /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-center gap-10 mb-10", children: [
-          /* @__PURE__ */ jsx("img", { src: bcp.src, alt: "BCP", className: "h-14 object-contain drop-shadow-sm" }),
-          /* @__PURE__ */ jsx("img", { src: bbva.src, alt: "BBVA", className: "h-14 object-contain drop-shadow-sm" })
+          /* @__PURE__ */ jsx("img", { src: bcp.src, alt: "BCP", loading: "lazy", className: "h-14 object-contain drop-shadow-sm" }),
+          /* @__PURE__ */ jsx("img", { src: bbva.src, alt: "BBVA", loading: "lazy", className: "h-14 object-contain drop-shadow-sm" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "space-y-8", children: [
           /* @__PURE__ */ jsxs("div", { children: [
@@ -271,8 +273,8 @@ function MediosPago() {
       /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-2xl shadow-xl border border-gray-200 p-10 relative", children: [
         /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-full h-2 bg-linear-to-r from-red-500 to-red-700 rounded-t-2xl" }),
         /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-center gap-10 mb-10", children: [
-          /* @__PURE__ */ jsx("img", { src: yape.src, alt: "Yape", className: "h-14 object-contain drop-shadow-sm" }),
-          /* @__PURE__ */ jsx("img", { src: plin.src, alt: "Plin", className: "h-14 object-contain drop-shadow-sm" })
+          /* @__PURE__ */ jsx("img", { src: yape.src, alt: "Yape", loading: "lazy", className: "h-14 object-contain drop-shadow-sm" }),
+          /* @__PURE__ */ jsx("img", { src: plin.src, alt: "Plin", loading: "lazy", className: "h-14 object-contain drop-shadow-sm" })
         ] }),
         /* @__PURE__ */ jsx("h3", { className: "text-xl font-bold text-gray-800 mb-3 text-center", children: "Plin / Yape" }),
         /* @__PURE__ */ jsx("p", { className: "text-gray-700 text-sm text-center mb-2", children: "Número:" }),
@@ -319,7 +321,7 @@ function ResponsabilidadSocial() {
 }
 
 const $$Nosotros = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "NosotrosAngel", Nosotros, {})} ${renderComponent($$result2, "Porque", PorqueElegirnos, {})} ${renderComponent($$result2, "Certificacion", Certificacion, {})} ${renderComponent($$result2, "MediosPagos", MediosPago, {})} ${renderComponent($$result2, "Responsabilidad", ResponsabilidadSocial, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Angel Aventura Tours | Nuestra Historia y Valores en la Selva Central", "description": "M\xE1s de 17 a\xF1os promoviendo cultura, gastronom\xEDa y cuidado del medio ambiente en la Selva Central del Per\xFA. Con\xF3cenos y viaja con confianza." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "NosotrosAngel", Nosotros, {})} ${renderComponent($$result2, "Porque", PorqueElegirnos, {})} ${renderComponent($$result2, "Certificacion", Certificacion, {})} ${renderComponent($$result2, "MediosPagos", MediosPago, {})} ${renderComponent($$result2, "Responsabilidad", ResponsabilidadSocial, {})} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/nosotros.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/nosotros.astro";

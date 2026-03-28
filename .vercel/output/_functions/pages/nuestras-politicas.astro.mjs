@@ -1,7 +1,7 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 export { renderers } from '../renderers.mjs';
 
 function Politicas() {
@@ -79,7 +79,7 @@ function Politicas() {
 }
 
 const $$NuestrasPoliticas = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Politicas", Politicas, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Nuestras Pol\xEDticas y Condiciones | Angel Aventura Tours", "description": "Consulta nuestras pol\xEDticas de reserva, cancelaci\xF3n y t\xE9rminos de servicio para tu tranquilidad al viajar a la Selva Central." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "Politicas", Politicas, {})} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/nuestras-politicas.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/nuestras-politicas.astro";

@@ -23,8 +23,8 @@ export default function MediosPago() {
                         <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-red-700 to-red-500 rounded-t-2xl"></div>
 
                         <div className="flex items-center justify-center gap-10 mb-10">
-                            <img src={bcp.src} alt="BCP" className="h-14 object-contain drop-shadow-sm" />
-                            <img src={bbva.src} alt="BBVA" className="h-14 object-contain drop-shadow-sm" />
+                            <img src={bcp.src} alt="BCP" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
+                            <img src={bbva.src} alt="BBVA" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
                         </div>
 
                         <div className="space-y-8">
@@ -69,8 +69,8 @@ export default function MediosPago() {
                         <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-red-500 to-red-700 rounded-t-2xl"></div>
 
                         <div className="flex items-center justify-center gap-10 mb-10">
-                            <img src={yape.src} alt="Yape" className="h-14 object-contain drop-shadow-sm" />
-                            <img src={plin.src} alt="Plin" className="h-14 object-contain drop-shadow-sm" />
+                            <img src={yape.src} alt="Yape" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
+                            <img src={plin.src} alt="Plin" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
                         </div>
 
                         <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">

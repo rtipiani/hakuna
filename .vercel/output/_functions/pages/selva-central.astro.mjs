@@ -1,8 +1,8 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { g as g1, a as g2, b as g3, c as g4, d as g5, e as g6, f as g7, h as g8, i as g9, j as g10, k as g11, l as g12 } from '../chunks/esc15_Cw49ojp6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 export { renderers } from '../renderers.mjs';
 
 const perene = new Proxy({"src":"/_astro/perene.BUz1u9SV.png","width":1200,"height":800,"format":"png"}, {
@@ -124,7 +124,7 @@ const tours = [
 const galleryImages = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
 const Recomendation = () => {
   return /* @__PURE__ */ jsx("section", { className: "py-16 bg-gray-50", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto text-center", children: [
-    /* @__PURE__ */ jsxs("h2", { className: "text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8", children: [
+    /* @__PURE__ */ jsxs("h1", { className: "text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8", children: [
       "Tours ",
       /* @__PURE__ */ jsx("br", {}),
       " Selva Central"
@@ -138,6 +138,7 @@ const Recomendation = () => {
           {
             src: tour.image.src,
             alt: tour.title,
+            loading: "lazy",
             className: "w-full h-56 object-cover rounded-t-lg"
           }
         ),
@@ -153,6 +154,7 @@ const Recomendation = () => {
             {
               href: waLink,
               target: "_blank",
+              rel: "noopener noreferrer",
               className: "inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600",
               children: [
                 "Consultar ahora",
@@ -169,6 +171,7 @@ const Recomendation = () => {
       {
         src: img.src,
         alt: `Galería ${index}`,
+        loading: "lazy",
         className: "h-32 w-full object-cover rounded-lg shadow-sm hover:scale-105 transition-transform cursor-pointer"
       },
       index
@@ -177,7 +180,7 @@ const Recomendation = () => {
 };
 
 const $$SelvaCentral = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "TourSelvaCentral", Recomendation, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Turismo en Selva Central | Paquetes de Viaje Completos", "description": "Explora lo mejor de la Selva Central del Per\xFA: Chanchamayo, Oxapampa, Pozuzo y m\xE1s con nuestros paquetes tur\xEDsticos certificados por MINCETUR." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "TourSelvaCentral", Recomendation, {})} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/selva-central.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/selva-central.astro";

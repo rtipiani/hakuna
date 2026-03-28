@@ -1,8 +1,8 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { p as perene, o as oxapampa, v as villaRica, a as pozuzo, b as puenteKimiri, c as chanchamayo, l as laFortuna } from '../chunks/la-fortuna_C1m9C7LR.mjs';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 export { renderers } from '../renderers.mjs';
 
 const tours = [
@@ -58,12 +58,16 @@ const tours = [
 ];
 const Recomendation = () => {
   return /* @__PURE__ */ jsx("section", { className: "py-16 bg-gray-50", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto text-center", children: [
-    /* @__PURE__ */ jsx("h2", { className: "text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8", children: "Tours más vendidos" }),
+    /* @__PURE__ */ jsxs("h1", { className: "text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8", children: [
+      "Tours ",
+      /* @__PURE__ */ jsx("br", {}),
+      " Full Days"
+    ] }),
     /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8", children: tours.map((tour, index) => {
       const message = `¡Hola! Angel Aventura Tours. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
       const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
       return /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-lg shadow-md", children: [
-        /* @__PURE__ */ jsx("img", { src: tour.image.src, alt: tour.title, className: "w-full h-56 object-cover rounded-t-lg" }),
+        /* @__PURE__ */ jsx("img", { src: tour.image.src, alt: tour.title, loading: "lazy", className: "w-full h-56 object-cover rounded-t-lg" }),
         /* @__PURE__ */ jsxs("div", { className: "p-6", children: [
           /* @__PURE__ */ jsx("h3", { className: "text-xl font-semibold mb-2", children: tour.title }),
           /* @__PURE__ */ jsx("p", { className: "font-medium mb-2", children: tour.days }),
@@ -72,7 +76,7 @@ const Recomendation = () => {
             tour.price
           ] }),
           /* @__PURE__ */ jsx("p", { className: "font-light mb-4", children: tour.description }),
-          /* @__PURE__ */ jsx("a", { href: waLink, target: "_blank", className: "inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600", children: "Consultar ahora" })
+          /* @__PURE__ */ jsx("a", { href: waLink, target: "_blank", rel: "noopener noreferrer", className: "inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600", children: "Consultar ahora" })
         ] })
       ] }, index);
     }) })
@@ -80,7 +84,7 @@ const Recomendation = () => {
 };
 
 const $$FullDay = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "TourFullDay", Recomendation, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Tours Full Day Selva Central | Chanchamayo y Oxapampa", "description": "\xBFPoco tiempo? Disfruta de nuestras escapadas Full Day en Chanchamayo y Oxapampa. Lo mejor de la selva central en un solo d\xEDa con Angel Aventura." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "TourFullDay", Recomendation, {})} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/full-day.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/full-day.astro";

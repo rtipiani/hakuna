@@ -1,8 +1,8 @@
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_ByyNhJnE.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BmF1WQap.mjs';
 import 'piccolore';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState } from 'react';
-import { $ as $$Layout } from '../chunks/Layout_B5YLM24h.mjs';
+import { $ as $$Layout } from '../chunks/Layout_T1GHeZ74.mjs';
 export { renderers } from '../renderers.mjs';
 
 const img1 = new Proxy({"src":"/_astro/villarica-1.BpiSo6u2.png","width":1200,"height":800,"format":"png"}, {
@@ -367,6 +367,7 @@ function Gallery() {
             {
               src: img.src,
               alt: `Imagen galería ${i + 1}`,
+              loading: "lazy",
               className: "w-full h-40 md:h-48 object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110"
             }
           )
@@ -427,7 +428,7 @@ function Gallery() {
 }
 
 const $$Galeria = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Gallery", Gallery, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Galeria", "client:component-export": "default" })} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Galer\xEDa de Fotos | Experiencias en la Selva Central | Angel Aventura", "description": "Mira las mejores fotos de nuestros viajeros en Chanchamayo, Oxapampa y Pozuzo. D\xE9jate enamorar por la magia de la selva central del Per\xFA." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "Gallery", Gallery, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/Vercel/angelaventuratours/src/components/Galeria", "client:component-export": "default" })} </main> ` })}`;
 }, "D:/Vercel/angelaventuratours/src/pages/galeria.astro", void 0);
 
 const $$file = "D:/Vercel/angelaventuratours/src/pages/galeria.astro";

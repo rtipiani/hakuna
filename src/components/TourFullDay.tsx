@@ -69,16 +69,16 @@ const Recomendation = () => {
     return (
         <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
-                    Tours más vendidos
-                </h2>
+                <h1 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
+                    Tours <br /> Full Days
+                </h1>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {tours.map((tour, index) => {
                         const message = `¡Hola! Angel Aventura Tours. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
                         const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
                         return (
                         <div key={index} className="bg-white rounded-lg shadow-md">
-                            <img src={tour.image.src} alt={tour.title} className="w-full h-56 object-cover rounded-t-lg" />
+                            <img src={tour.image.src} alt={tour.title} loading="lazy" className="w-full h-56 object-cover rounded-t-lg" />
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold mb-2">
                                     {tour.title}
@@ -92,7 +92,7 @@ const Recomendation = () => {
                                 <p className="font-light mb-4">
                                     {tour.description}
                                 </p>
-                                <a href={waLink} target="_blank" className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600">
+                                <a href={waLink} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600">
                                     Consultar ahora
                                 </a>
                             </div>

@@ -67,6 +67,7 @@ export default function Gallery() {
                             <img
                                 src={img.src}
                                 alt={`Imagen galería ${i + 1}`}
+                                loading="lazy"
                                 className="w-full h-40 md:h-48 object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110"
                             />
                         </div>

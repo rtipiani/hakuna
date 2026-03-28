@@ -16,6 +16,7 @@ export default function Certificacion() {
                         <img 
                             src={cert1.src} 
                             alt="Certificación 1" 
+                            loading="lazy"
                             className="w-full h-auto object-contain rounded-lg"
                         />
                     </div>
@@ -24,6 +25,7 @@ export default function Certificacion() {
                         <img 
                             src={cert2.src} 
                             alt="Certificación 2" 
+                            loading="lazy"
                             className="w-full h-auto object-contain rounded-lg"
                         />
                     </div>

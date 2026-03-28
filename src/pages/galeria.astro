@@ -2,6 +2,11 @@
 import Gallery from "../components/Galeria";
 import Layout from "../layouts/Layout.astro";
 ---
-<Layout>
-    <Gallery client:load />
+<Layout 
+    title="Galería de Fotos | Experiencias en la Selva Central | Angel Aventura" 
+    description="Mira las mejores fotos de nuestros viajeros en Chanchamayo, Oxapampa y Pozuzo. Déjate enamorar por la magia de la selva central del Perú."
+>
+    <main>
+        <Gallery client:visible />
+    </main>
 </Layout>

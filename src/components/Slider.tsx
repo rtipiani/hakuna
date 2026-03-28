@@ -7,21 +7,21 @@ import slide3 from "../assets/images/slide3.png";
 const slides = [
     {
         src: slide1.src,
-        alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+        alt: "Catarata en Chanchamayo, Selva Central del Perú, rodeada de abundante vegetación.",
         title: "Chanchamayo",
         description: "Sumérgete en la selva central, entre cataratas, café y la calidez de su gente.",
         whatsappLink: "https://wa.link/okkl9y"
     },
     {
         src: slide2.src,
-        alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+        alt: "Paisaje natural de Oxapampa con montañas y bosques nubosos.",
         title: "Oxapampa",
         description: "Vive la armonía entre montañas, tradiciones austro-alemanas y naturaleza pura.",
         whatsappLink: "https://wa.link/b6g8ba"
     },
     {
         src: slide3.src,
-        alt: "Recorre las sagradas tierras del Cusco, hogar el imperio Inca.",
+        alt: "Arquitectura típica austro-alemana en el pueblo de Pozuzo.",
         title: "Pozuzo",
         description: "Descubre el encanto del primer pueblo austro-alemán del Perú, rodeado de verdes valles.",
         whatsappLink: "https://wa.link/wlb78h"
@@ -74,9 +74,9 @@ const Slider: React.FC = () => {
                             loading={i === 0 ? "eager" : "lazy"}
                         />
                         <div className="absolute inset-0 bg-black/45 flex flex-col justify-center items-center text-center px-4 md:px-8 lg:px-12 text-white">
-                            <h1 className="text-3xl sm:text-6xl md:text-7xl font-semibold leading-tight tracking-wide mb-1">
+                            <h2 className="text-3xl sm:text-6xl md:text-7xl font-semibold leading-tight tracking-wide mb-1">
                                 {slide.title}
-                            </h1>
+                            </h2>
                             <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-3 max-w-[90%] lg:max-w-[70%]">
                                 {slide.description}
                             </p>
