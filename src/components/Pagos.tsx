@@ -23,7 +23,7 @@ const MediosDePago = () => {
     };
 
     return (
-        <section className="py-20 bg-linear-to-b from-gray-50 to-white relative overflow-hidden">
+        <section className="py-20 bg-linear-to-b from-gray-50 to-white relative overflow-hidden font-sans">
             {/* Elementos Decorativos de Fondo */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-purple/5 rounded-full filter blur-3xl pointer-events-none"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-orange/5 rounded-full filter blur-3xl pointer-events-none"></div>
@@ -104,7 +104,7 @@ const MediosDePago = () => {
                                                 Número de Celular para pago
                                             </span>
                                             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-                                                <span className="text-3xl sm:text-4xl font-black text-brand-purple tracking-wide">
+                                                <span className="text-3xl sm:text-4xl font-extrabold text-brand-purple tracking-wide">
                                                     964 534 249
                                                 </span>
                                                 <button
@@ -204,7 +204,7 @@ const MediosDePago = () => {
                                                 Número de Cuenta
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
-                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide font-mono">
+                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
                                                     41090399509027
                                                 </span>
                                                 <button
@@ -226,7 +226,7 @@ const MediosDePago = () => {
                                                 CCI (Interbancario)
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
-                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide font-mono">
+                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
                                                     002410190399509027
                                                 </span>
                                                 <button
@@ -275,7 +275,7 @@ const MediosDePago = () => {
                                                 Número de Cuenta
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
-                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide font-mono">
+                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
                                                     0011-0814-0221427225
                                                 </span>
                                                 <button
@@ -297,7 +297,7 @@ const MediosDePago = () => {
                                                 CCI (Interbancario)
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
-                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide font-mono">
+                                                <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
                                                     011-814-000221427225-10
                                                 </span>
                                                 <button
