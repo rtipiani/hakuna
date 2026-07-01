@@ -1,6 +1,5 @@
 // @ts-ignore
 import { defineAction, ActionError } from "astro:actions";
-import nodemailer from "nodemailer";
 
 export const server = {
   send: defineAction({
@@ -17,6 +16,9 @@ export const server = {
           message: "Config de correo incompleta en el servidor.",
         });
       }
+
+      // Dynamic import to prevent Vercel top-level initialization errors
+      const nodemailer = (await import("nodemailer")).default;
 
       const transporter = nodemailer.createTransport({
         service: "gmail",
