@@ -1,14 +1,14 @@
-import logo from "../assets/images/logo.webp";
+import logo from "../assets/images/logo.png";
 
 export default function Footer() {
     return (
-        <footer className="bg-red-600 text-gray-300 py-12 mt-10">
+        <footer className="bg-brand-purple text-gray-300 py-12 mt-10">
             <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
                 <div>
-                    <img src={logo.src} alt="Angel Aventura Tours" className="w-36 mb-4" />
+                    <img src={logo.src} alt="Hakuna Matata Travel VIP" className="w-36 mb-4" />
                     <p className="text-sm leading-relaxed">
-                        Agencia de viajes y turismo con más de 17 años de experiencia. 
+                        Agencia de viajes y turismo con amplia experiencia. 
                         Viaja con los mejores por toda la selva central.
                     </p>
                 </div>
@@ -28,10 +28,10 @@ export default function Footer() {
                 <div>
                     <h3 className="text-white font-semibold mb-4">Información</h3>
                     <ul className="space-y-2 text-sm">
-                        <li><i className="fa-solid fa-location-dot mr-2"></i>Jr. Tarma N° 29O, Chanchamayo, La Merced</li>
+                        <li><i className="fa-solid fa-location-dot mr-2"></i>Jr. Tarma N° 290, Chanchamayo, La Merced</li>
                         <li><i className="fa-solid fa-phone mr-2"></i>+51 964 534 249</li>
-                        <li><i className="fa-solid fa-phone mr-2"></i>+51 9O2 498 111</li>
-                        <li><i className="fa-solid fa-envelope mr-2"></i>ventas@angeladventure.pe</li>
+                        <li><i className="fa-solid fa-phone mr-2"></i>+51 902 498 111</li>
+                        <li><i className="fa-solid fa-envelope mr-2"></i>contacto@hakunamatatatravel.com</li>
                         <li>
                             <a href="/nuestras-politicas">
                                 <i className="fa-solid fa-book mr-2"></i>
@@ -45,9 +45,9 @@ export default function Footer() {
                     <h3 className="text-white font-semibold mb-4">Síguenos</h3>
                     <div className="flex gap-4 mt-4 text-xl">
                         <a 
-                            href="https://www.facebook.com/Angelaventuraturismochanc/" 
+                            href="https://www.facebook.com/" 
                             className="hover:text-white transition-colors"
-                            title="Facebook Angel Aventura Tours"
+                            title="Facebook Hakuna Matata"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -55,9 +55,9 @@ export default function Footer() {
                         </a>
 
                         <a 
-                            href="https://www.instagram.com/p/DRU4YTCCc5o/" 
+                            href="https://www.instagram.com/" 
                             className="hover:text-white transition-colors"
-                            title="Instagram Angel Aventura Tours"
+                            title="Instagram Hakuna Matata"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -65,9 +65,9 @@ export default function Footer() {
                         </a>
 
                         <a 
-                            href="https://www.tiktok.com/@angelaventurachanchamayo" 
+                            href="https://www.tiktok.com/" 
                             className="hover:text-white transition-colors"
-                            title="Tiktok Angel Aventura Tours"
+                            title="Tiktok Hakuna Matata"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -77,7 +77,7 @@ export default function Footer() {
                         <a 
                             href="https://wa.link/exn5e4" 
                             className="hover:text-white transition-colors"
-                            title="WhatsApp Angel Aventura Tours"
+                            title="WhatsApp Hakuna Matata"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -88,7 +88,7 @@ export default function Footer() {
             </div>
 
             <div className="text-center text-gray-100 text-sm mt-10 border-t border-orange-500 pt-6">
-                ©2025 Angel Aventura Tours. Todos los derechos reservados.
+                ©2026 Hakuna Matata Travel VIP. Todos los derechos reservados.
             </div>
         </footer>
     );

@@ -6,7 +6,7 @@ export default function Mapa() {
                     Nuestra Ubicación
                 </h2>
                 <p className="text-center text-gray-600 mt-3 mb-12 text-lg md:text-xl">
-                    Encuéntranos en Aventura Sobre Arena
+                    Visítanos en nuestra oficina principal en Chanchamayo
                 </p>
 
                 <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-xl border border-red-100">
@@ -18,7 +18,7 @@ export default function Mapa() {
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Mapa de Aventura Sobre Arena"
+                        title="Mapa de ubicación de la agencia"
                     ></iframe>
                 </div>
             </div>

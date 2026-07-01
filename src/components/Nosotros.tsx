@@ -13,12 +13,12 @@ export default function Nosotros() {
                     <div className="grid md:grid-cols-2 gap-10 items-center mb-14">
                         <img 
                             src={nosotrosImg.src} 
-                            alt="Ángel Aventura Chanchamayo" 
+                            alt="Hakuna Matata Travel VIP" 
                             className="w-full h-80 object-cover rounded-lg shadow-md"
                         />
 
                         <p className="text-gray-700 leading-relaxed text-lg">
-                            En <span className="font-semibold text-red-600">Ángel Aventura Chanchamayo </span> 
+                            En <span className="font-semibold text-red-600">Hakuna Matata Travel VIP </span> 
                             ofrecemos experiencias turísticas de alta calidad en la selva central del Perú, 
                             enfocadas en la exploración responsable y sostenible, promoviendo la conservación 
                             de la biodiversidad y el desarrollo local.

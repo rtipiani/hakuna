@@ -82,7 +82,7 @@ const Slider: React.FC = () => {
                             </p>
                             <a
                                 href={slide.whatsappLink}
-                                className="inline-flex items-center bg-red-600 text-white hover:bg-yellow-600 px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:scale-95 transition duration-300"
+                                className="inline-flex items-center bg-brand-purple text-white hover:bg-brand-orange px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:scale-95 transition duration-300"
                                 target="_blank"
                                 aria-label={`Consulta sobre ${slide.title} vía whatsapp`}
                             >

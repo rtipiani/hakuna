@@ -2,41 +2,73 @@ import React from "react";
 
 const TopHeader: React.FC = () => {
     return (
-        <section className="bg-red-600 hidden lg:flex md:items-center md:justify-center md:py-4 md:px-8">
-            <div className="flex items-center space-x-12 text-sm">
-                <div>
-                    <a href="" className="text-white rounded flex items-center gap-1 py-1 px-2 text-md font-medium" aria-label="Llamar a Angela Aventura Tours">
-                        <i className="fas fa-phone text-xl text-white"></i>
-                        <span className="sr-only">
-                            Llámanos:
-                        </span>
-                        +51 964 534 249
+        <section className="bg-brand-purple hidden lg:block py-2 border-b border-white/5">
+            <div className="container mx-auto px-4 lg:px-6 flex justify-between items-center text-xs text-white/90">
+                {/* Contacto Izquierda */}
+                <div className="flex items-center space-x-6">
+                    <a 
+                        href="tel:+51964534249" 
+                        className="flex items-center gap-2 hover:text-brand-yellow transition duration-200" 
+                        aria-label="Llamar a Hakuna Matata Travel VIP"
+                    >
+                        <i className="fas fa-phone text-[10px]"></i>
+                        <span>+51 964 534 249</span>
+                    </a>
+                    
+                    <a 
+                        href="mailto:contacto@hakunamatatatravel.com" 
+                        className="flex items-center gap-2 hover:text-brand-yellow transition duration-200" 
+                        aria-label="Enviar un correo"
+                    >
+                        <i className="fas fa-envelope text-[10px]"></i>
+                        <span>contacto@hakunamatatatravel.com</span>
                     </a>
                 </div>
 
-                <div className="flex space-x-4 text-xl">
-                    <a href="https://www.facebook.com/Angelaventuraturismochanc/" className="bg-white p-2 rounded-full flex items-center justify-center w-9 h-9 hover:bg-orange-100  transition" aria-label="Vamos a facebook" target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-facebook-f text-red-600"></i>
+                {/* Redes Sociales Derecha */}
+                <div className="flex items-center space-x-4 text-sm">
+                    <a 
+                        href="https://www.facebook.com/" 
+                        className="hover:text-brand-yellow transition duration-200" 
+                        aria-label="Vamos a facebook" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <i className="fa-brands fa-facebook-f text-[13px]"></i>
                     </a>
-                    <a href="https://www.instagram.com/p/DRU4YTCCc5o/" className="bg-white p-2 rounded-full flex items-center justify-center w-9 h-9 hover:bg-orange-100  transition" aria-label="Vamos a instagram" target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-instagram text-red-600"></i>
+                    <a 
+                        href="https://www.instagram.com/" 
+                        className="hover:text-brand-yellow transition duration-200" 
+                        aria-label="Vamos a instagram" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <i className="fa-brands fa-instagram text-[13px]"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@angelaventurachanchamayo" className="bg-white p-2 rounded-full flex items-center justify-center w-9 h-9 hover:bg-orange-100  transition" aria-label="Vamos a tiktok" target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-tiktok text-red-600"></i>
+                    <a 
+                        href="https://www.tiktok.com/" 
+                        className="hover:text-brand-yellow transition duration-200" 
+                        aria-label="Vamos a tiktok" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <i className="fa-brands fa-tiktok text-[13px]"></i>
                     </a>
-                    <a href="https://wa.link/exn5e4" className="bg-white p-2 rounded-full flex items-center justify-center w-9 h-9 hover:bg-orange-100  transition" aria-label="Vamos a whatsapp" target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-whatsapp text-red-600"></i>
-                    </a>
-                </div>
-                <div>
-                    <a href="mailto:contacto@gmail.com" className="text-white hover:underline rounded flex items-center gap-2py-2 px-4 text-lg" aria-label="Enviar un correo">
-                        <i className="fas fa-envelope text-xl text-white mr-1"></i>
-                        ventas@angeladventure.pe
+                    <a 
+                        href="https://wa.link/exn5e4" 
+                        className="hover:text-brand-yellow transition duration-200" 
+                        aria-label="Vamos a whatsapp" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <i className="fa-brands fa-whatsapp text-[13px]"></i>
                     </a>
                 </div>
             </div>
         </section>
-    )
+    );
 }
+
+
 
 export default TopHeader;

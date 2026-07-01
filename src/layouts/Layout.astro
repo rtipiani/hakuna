@@ -12,13 +12,13 @@ interface Props {
 }
 
 const { 
-	title = "Angel Aventura Tours | Operador Turístico Calificado Por MINCETUR",
-	description = "Somos una empresa especializada en brindar servicios turísticos en la selva central del Perú con más de 17 años de experiencia y tenemos como fin promover nuestra cultura, gastronomía y el cuidado del medio ambiente.",
+	title = "Hakuna Matata Travel VIP | Operador Turístico Calificado Por MINCETUR",
+	description = "Somos una empresa especializada en brindar servicios turísticos de alta calidad en la selva central del Perú con el fin de promover nuestra cultura, gastronomía y el cuidado del medio ambiente.",
 	canonicalUrl = Astro.url.href,
 	ogImage = "/og-image.png"
 } = Astro.props;
 
-const siteUrl = "https://www.angelaventurachanchamayo.com";
+const siteUrl = "https://www.hakunamatatatravel.pe";
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
@@ -56,7 +56,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
 		<script type="application/ld+json" is:inline set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "TravelAgency",
-			"name": "Angel Aventura Tours",
+			"name": "Hakuna Matata Travel VIP",
 			"url": siteUrl,
 			"logo": `${siteUrl}/logo.png`,
 			"image": fullOgImage,
@@ -68,8 +68,8 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
 				"addressLocality": "Chanchamayo"
 			},
 			"sameAs": [
-				"https://www.facebook.com/Angelaventuraturismochanc/",
-				"https://www.instagram.com/p/DRU4YTCCc5o/"
+				"https://www.facebook.com/",
+				"https://www.instagram.com/"
 			]
 		})}>
 		</script>
@@ -80,12 +80,12 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
 		<slot />
 		<Footer />
 		<a
-			href="https://wa.me/51964534249?text=Hola%20%C3%81ngel%20Aventura%20Tours%2C%20estoy%20interesad%40%20en%20conocer%20Oxapampa%20%F0%9F%8C%B8%2C%20Chanchamayo%20%F0%9F%8C%B4%20y%20toda%20la%20Selva%20Central%20%F0%9F%8C%BF"
+			href="https://wa.me/51964534249?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20estoy%20interesad%40%20en%20conocer%20Oxapampa%20%F0%9F%8C%B8%2C%20Chanchamayo%20%F0%9F%8C%B4%20y%20toda%20la%20Selva%20Central%20%F0%9F%8C%BF"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="fixed bottom-4 right-4 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
 		>
-			<i class="fa-brands fa-whatsapp text-3xl"></i>
+			<i class="fa-brands fa-whatsapp class-3xl"></i>
 		</a>
 	</body>
 </html>

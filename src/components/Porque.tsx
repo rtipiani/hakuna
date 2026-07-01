@@ -47,7 +47,7 @@ export default function PorqueElegirnos() {
             <div className="max-w-7xl mx-auto px-6">
                 
                 <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                    ¿Por qué <br /> <span className="text-red-600">Ángel Aventura Chanchamayo </span> <br />es la mejor opción?
+                    ¿Por qué <br /> <span className="text-red-600">Hakuna Matata Travel VIP </span> <br />es la mejor opción?
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

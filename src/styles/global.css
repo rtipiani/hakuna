@@ -1,3 +1,26 @@
 @import "tailwindcss";
 
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@theme {
+  --color-red-600: #ea5b15;
+  --color-red-700: #b9370b;
+  --color-brand-purple: #1b0222;
+  --color-brand-orange: #ea5b15;
+  --color-brand-yellow: #fed801;
+
+  /* Overrides for standard Tailwind classes to perfectly match the logo palette and remove mismatched colors */
+  --color-orange-100: #fff2e6; /* Soft sunset peach for hover backdrops */
+  --color-orange-200: #ffe5cc;
+  --color-orange-500: #ea5b15; /* Sunset orange */
+  --color-orange-600: #ea5b15;
+  --color-orange-800: #1b0222; /* Map brownish-orange links to brand-purple (deep violet-plum) */
+  --color-orange-900: #1b0222;
+  --color-yellow-600: #fed801; /* Sun gold */
+  --color-yellow-700: #dca000; /* Darker gold */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

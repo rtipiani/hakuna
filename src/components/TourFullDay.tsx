@@ -74,7 +74,7 @@ const Recomendation = () => {
                 </h1>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {tours.map((tour, index) => {
-                        const message = `¡Hola! Angel Aventura Tours. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
+                        const message = `¡Hola! Hakuna Matata Travel VIP. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
                         const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
                         return (
                         <div key={index} className="bg-white rounded-lg shadow-md">
@@ -92,7 +92,7 @@ const Recomendation = () => {
                                 <p className="font-light mb-4">
                                     {tour.description}
                                 </p>
-                                <a href={waLink} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-yellow-600">
+                                <a href={waLink} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-brand-purple text-white rounded-md hover:bg-brand-orange">
                                     Consultar ahora
                                 </a>
                             </div>

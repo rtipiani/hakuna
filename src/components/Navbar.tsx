@@ -1,4 +1,4 @@
-import logo from "../assets/images/logo.webp";
+import logo from "../assets/images/logo.png";
 import React, { useState, useEffect } from "react";
 
 const menu = [
@@ -8,12 +8,9 @@ const menu = [
     label: "Paquetes Turísticos",
     dropdown: [
       { label: "Oxapampa", href: "/oxapampa" },
-      { label: "Chanchamayo", href: "/chanchamayo" },
       { label: "Selva Central", href: "/selva-central" },
     ],
   },
-  { label: "Full Day", href: "/full-day" },
-  { label: "Escolares", href: "/escolares" },
   { label: "Galería", href: "/galeria" },
   { label: "Contáctanos", href: "/contactanos" },
 ];
@@ -50,7 +47,7 @@ const Navbar: React.FC = () => {
         <a href="/" className="flex items-center z-50 relative">
           <img
             src={logo.src}
-            alt="Angela Aventura Tours"
+            alt="Hakuna Matata Travel VIP"
             className="h-12 lg:h-16 object-contain"
           />
         </a>
@@ -184,7 +181,7 @@ const Navbar: React.FC = () => {
           <div className="mt-auto pt-8">
             <a
               href="/contactanos"
-              className="block w-full text-center bg-red-600 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+              className="block w-full text-center bg-brand-purple text-white font-bold py-3 rounded-lg shadow-lg hover:bg-brand-orange transition-transform transform hover:scale-105"
               onClick={() => setIsMenuOpen(false)}
             >
               Reserva Ahora

@@ -40,7 +40,7 @@ export default function MediosPago() {
                                         CCI: <span className="font-semibold">002410190399509027</span>
                                     </p>
                                     <p className="text-gray-700 text-sm">
-                                        Titular: <span className="font-semibold">ANGEL AVENTURA CHANCHAMAYO</span>
+                                        Titular: <span className="font-semibold">HAKUNA MATATA TRAVEL VIP</span>
                                     </p>
                                 </div>
                             </div>
