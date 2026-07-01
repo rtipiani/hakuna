@@ -2,24 +2,14 @@
 import { defineAction, ActionError } from "astro:actions";
 import nodemailer from "nodemailer";
 
-const GMAIL_USER = import.meta.env.GMAIL_USER;
-const GMAIL_APP_PASSWORD = import.meta.env.GMAIL_APP_PASSWORD;
-const GMAIL_TO = import.meta.env.GMAIL_TO;
-
-// ⚠️ Importante en Vercel: no validar variables FUERA del handler
-//    (evita crash en la función)
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: GMAIL_USER,
-    pass: GMAIL_APP_PASSWORD,
-  },
-});
-
 export const server = {
   send: defineAction({
     accept: "form",
     handler: async (formData) => {
+      const GMAIL_USER = import.meta.env.GMAIL_USER;
+      const GMAIL_APP_PASSWORD = import.meta.env.GMAIL_APP_PASSWORD;
+      const GMAIL_TO = import.meta.env.GMAIL_TO;
+
       // 🔹 Validación segura de env vars dentro del request
       if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !GMAIL_TO) {
         throw new ActionError({
@@ -27,6 +17,14 @@ export const server = {
           message: "Config de correo incompleta en el servidor.",
         });
       }
+
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: GMAIL_USER,
+          pass: GMAIL_APP_PASSWORD,
+        },
+      });
 
       const name = formData.get("name") as string;
       const email = formData.get("email") as string;
