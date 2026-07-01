@@ -93,7 +93,7 @@ const MediosDePago = () => {
                                             <i className="fa-solid fa-qrcode text-brand-purple text-2xl"></i>
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-bold text-brand-purple">Pago rápido por Yape o Plin</h3>
+                                            <h3 className="text-xl font-bold text-brand-purple">Pago rápido por Plin</h3>
                                             <p className="text-xs text-gray-400">Confirmación inmediata sin comisiones</p>
                                         </div>
                                     </div>
@@ -105,10 +105,10 @@ const MediosDePago = () => {
                                             </span>
                                             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
                                                 <span className="text-3xl sm:text-4xl font-extrabold text-brand-purple tracking-wide">
-                                                    964 534 249
+                                                    935 652 497
                                                 </span>
                                                 <button
-                                                    onClick={() => handleCopy("964534249", "celular")}
+                                                    onClick={() => handleCopy("935652497", "celular")}
                                                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-purple/5 hover:bg-brand-purple text-brand-purple hover:text-white text-xs font-bold transition duration-300 cursor-pointer active:scale-95"
                                                     title="Copiar número"
                                                 >
@@ -156,9 +156,6 @@ const MediosDePago = () => {
                                 <div className="space-y-4 relative z-10 w-full">
                                     <h4 className="text-brand-yellow font-bold uppercase text-xs tracking-wider">Billeteras Soportadas</h4>
                                     <div className="flex justify-center items-center gap-6 py-4">
-                                        <div className="bg-white p-3 rounded-2xl shadow-md transform hover:scale-105 transition duration-300">
-                                            <img src={yape.src} alt="Yape" className="h-10 sm:h-12 object-contain" />
-                                        </div>
                                         <div className="bg-white p-3 rounded-2xl shadow-md transform hover:scale-105 transition duration-300">
                                             <img src={plin.src} alt="Plin" className="h-10 sm:h-12 object-contain" />
                                         </div>
