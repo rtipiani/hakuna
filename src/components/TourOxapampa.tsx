@@ -48,9 +48,9 @@ const TourOxapampa = () => {
                     <span className="text-brand-orange text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">
                         Nuestras Rutas
                     </span>
-                    <h2 className="text-2xl md:text-4xl font-extrabold text-brand-purple tracking-tight">
+                    <h1 className="text-2xl md:text-4xl font-extrabold text-brand-purple tracking-tight">
                         Paquetes Turísticos en Oxapampa
-                    </h2>
+                    </h1>
                     <div className="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
                 </div>
 

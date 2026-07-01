@@ -130,7 +130,7 @@ const MediosDePago = () => {
                                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center px-2 py-1">
                                             <div>
                                                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block">Titular</span>
-                                                <span className="text-sm font-semibold text-gray-700">KARINA DE LA CRUZ PAZCE</span>
+                                                <span className="text-sm font-semibold text-gray-700">JEANPIERRE LEONARDO QUISPE</span>
                                             </div>
                                             <div className="sm:text-right">
                                                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block">Operación</span>

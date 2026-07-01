@@ -3,9 +3,9 @@ export default function Politicas() {
         <section className="w-full py-20 bg-white">
             <div className="max-w-6xl mx-auto px-6">
 
-                <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide drop-shadow-sm">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide drop-shadow-sm">
                     Políticas y Condiciones de Viaje
-                </h2>
+                </h1>
 
                 <div className="mt-12 bg-linear-to-br from-red-50 to-red-50 p-10 rounded-3xl shadow-xl border border-red-100 space-y-8">
 

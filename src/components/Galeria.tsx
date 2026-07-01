@@ -49,9 +49,9 @@ export default function Gallery() {
         <section className="w-full py-20 bg-white">
             <div className="max-w-6xl mx-auto px-6">
 
-                <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide drop-shadow-sm">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 tracking-wide drop-shadow-sm">
                     Galería
-                </h2>
+                </h1>
 
                 <p className="text-center text-gray-600 mt-3 mb-12 text-lg md:text-xl">
                     Momentos únicos en nuestras experiencias turísticas.

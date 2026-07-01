@@ -5,9 +5,9 @@ export default function Nosotros() {
         <section className="py-16 bg-gray-50">
             <div className="max-w-6xl mx-auto px-6">
 
-                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                <h1 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                     Sobre Nosotros
-                </h2>
+                </h1>
 
                 <div className="bg-white shadow-md rounded-lg p-8 md:p-12">
                     <div className="grid md:grid-cols-2 gap-10 items-center mb-14">
