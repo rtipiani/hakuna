@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import pozuzo from "../assets/images/pozuzo.png";
 import chanchamayo from "../assets/images/chanchamayo.png";
+import oxapampaImg from "../assets/images/oxapampa.png";
+import pereneImg from "../assets/images/perene.png";
 
 const tours = [
     {
@@ -15,6 +17,7 @@ const tours = [
             "Colonia Austro-Alemana",
             "Alojamiento y Tours incluidos"
         ],
+        hasModal: true,
         precios: {
             normal: {
                 alojamientoTours: { basico: 135, exclusivo: 180 },
@@ -23,6 +26,205 @@ const tours = [
             feriado: {
                 alojamientoTours: { basico: 200, exclusivo: 250 },
                 alojamientoToursBus: { basico: 420, exclusivo: 450 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo y Villa Rica",
+        days: "3D/2N",
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa (Tunki Cueva, Wharapo, etc.)",
+            "Tour Pozuzo (Pozas Turquesas, Prusia, etc.)",
+            "Tour Villa Rica (Laguna El Oconal, etc.)",
+            "2 Noches de alojamiento en Oxapampa",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 225, exclusivo: 315 },
+                alojamientoToursBus: { basico: 375, exclusivo: 465 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 350, exclusivo: 450 },
+                alojamientoToursBus: { basico: 570, exclusivo: 650 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica y Perené",
+        days: "4D/3N",
+        image: pereneImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené (Chanchamayo)",
+            "3 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 315, exclusivo: 450 },
+                alojamientoToursBus: { basico: 465, exclusivo: 600 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 500, exclusivo: 650 },
+                alojamientoToursBus: { basico: 720, exclusivo: 850 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica, Perené y Aventura",
+        days: "5D/4N",
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "4 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 405, exclusivo: 585 },
+                alojamientoToursBus: { basico: 555, exclusivo: 735 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 650, exclusivo: 850 },
+                alojamientoToursBus: { basico: 870, exclusivo: 1050 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica, Perené, Aventura y City Tour",
+        days: "6D/5N",
+        image: oxapampaImg,
+        lista: [
+            "City Tour",
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "5 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 495, exclusivo: 720 },
+                alojamientoToursBus: { basico: 645, exclusivo: 870 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 800, exclusivo: 1050 },
+                alojamientoToursBus: { basico: 1020, exclusivo: 1250 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN: Salida a Oxapampa (Escolar)",
+        days: "6D/5N",
+        image: oxapampaImg,
+        lista: [
+            "City Tour",
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "5 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
+        days: "5D/4N",
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "4 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
+        days: "4D/3N",
+        image: pereneImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "3 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN OXAPAMPA SALIDA VIP (Escolar)",
+        days: "3D/2N",
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "2 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
             }
         }
     }
@@ -85,13 +287,25 @@ const Recomendation = () => {
 
                                     {/* Separador y Botón de WhatsApp - Abre Modal de Precios */}
                                     <div className="border-t border-gray-100 pt-4 mt-auto">
-                                        <button 
-                                            onClick={() => setSelectedTourIndex(index)}
-                                            className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                                        >
-                                            <i className="fa-solid fa-tags text-sm"></i>
-                                            <span>Ver opciones de precios</span>
-                                        </button>
+                                        {tour.hasModal ? (
+                                            <button 
+                                                onClick={() => setSelectedTourIndex(index)}
+                                                className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                            >
+                                                <i className="fa-solid fa-tags text-sm"></i>
+                                                <span>Ver opciones de precios</span>
+                                            </button>
+                                        ) : (
+                                            <a 
+                                                href={`https://wa.me/51918024860?text=${encodeURIComponent(`¡Hola! Hakuna Matata Travel VIP. Estoy interesado en el paquete ${tour.title} - ${tour.days}.`)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                            >
+                                                <i className="fa-brands fa-whatsapp text-lg"></i>
+                                                <span>Consultar precio</span>
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>

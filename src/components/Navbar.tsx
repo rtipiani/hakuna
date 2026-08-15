@@ -9,6 +9,8 @@ const menu = [
     dropdown: [
       { label: "Oxapampa", href: "/oxapampa" },
       { label: "Selva Central", href: "/selva-central" },
+      { label: "Full Day", href: "/full-day" },
+      { label: "Escolares", href: "/escolares" },
     ],
   },
   { label: "Galería", href: "/galeria" },

@@ -1,4 +1,3 @@
-// @ts-ignore
 import { defineAction, ActionError } from "astro:actions";
 
 export const server = {

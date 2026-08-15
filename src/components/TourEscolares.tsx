@@ -1,8 +1,8 @@
-import esc from "../assets/images/escolares/esc-1.png";
-import esc2 from "../assets/images/escolares/esc2.png";
-import esc3 from "../assets/images/escolares/esc3.png";
+import React, { useState } from "react";
+import oxapampaImg from "../assets/images/oxapampa.png";
+import pereneImg from "../assets/images/perene.png";
 
-// Galería general (puedes cambiar o ampliar)
+// Galería independiente (abajo)
 import g1 from "../assets/images/escolares/esc4.png";
 import g2 from "../assets/images/escolares/esc5.png";
 import g3 from "../assets/images/escolares/esc6.png";
@@ -16,115 +16,418 @@ import g10 from "../assets/images/escolares/esc13.png";
 import g11 from "../assets/images/escolares/esc14.png";
 import g12 from "../assets/images/escolares/esc15.png";
 
+const galleryImages = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
+
 const tours = [
     {
-        title: "PERENÉ - OXAPAMPA - POZUZO - VILLA RICA",
-        days: "4D/3N",
-        price: 650,
-        image: esc,
-        description:
-            "Una experiencia educativa y divertida en la Selva Central, perfecta para estudiantes que buscan aprender, explorar y disfrutar rodeados de naturaleza."
+        title: "PROMOCIÓN: Salida a Oxapampa (Escolar)",
+        days: "6D/5N",
+        image: oxapampaImg,
+        lista: [
+            "City Tour",
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "5 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
     },
     {
-        title: "PERENE - OXAPAMPA - POZUZO - VILLA RICA - INDIANA JONES",
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
         days: "5D/4N",
-        price: 830,
-        image: esc2,
-        description:
-            "Un viaje escolar de aventura y aprendizaje por la Selva Central, explorando ciudades emblemáticas y culminando con la emocionante experiencia Indiana Jones."
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "4 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
     },
     {
-        title: "VILLA RICA - OXAPAMPA - POZUZO",
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
+        days: "4D/3N",
+        image: pereneImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "3 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN OXAPAMPA SALIDA VIP (Escolar)",
         days: "3D/2N",
-        price: 600,
-        image: esc3,
-        description:
-            "Una experiencia escolar llena de naturaleza y cultura, recorriendo Villa Rica, Oxapampa y Pozuzo en un viaje educativo por la Selva Central."
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "2 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
     }
 ];
 
-// Galería independiente (abajo)
-const galleryImages = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
+const TourEscolares = () => {
+    const [selectedTourIndex, setSelectedTourIndex] = useState<number | null>(null);
 
-const Recomendation = () => {
     return (
-        <section className="py-16 bg-gray-50">
-            <div className="max-w-7xl mx-auto text-center">
-                <h1 className="text-3xl md:text-4xl font-semibold mb-12 px-4 sm:px-8">
-                    Tours <br /> para escolares
-                </h1>
+        <section id="escolares" className="py-20 bg-gray-50/50 scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Cabecera de la Sección */}
+                <div className="text-center mb-16">
+                    <span className="text-brand-orange text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">
+                        Viajes de Promoción
+                    </span>
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-brand-purple tracking-tight">
+                        Tours VIP para Escolares
+                    </h2>
+                    <div className="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+                </div>
 
-                {/* Cards */}
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                {/* Grilla de Tarjetas */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {tours.map((tour, index) => {
-                        const message = `¡Hola! Hakuna Matata Travel VIP. Estoy interesado en el paquete ${tour.days} - ${tour.title}.`;
-                        const waLink = `https://wa.me/51918024860?text=${encodeURIComponent(message)}`;
-
                         return (
-                            <div key={index} className="bg-white rounded-lg shadow-md">
+                            <div 
+                                key={index} 
+                                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col h-full"
+                            >
+                                {/* Contenedor de Imagen con Badge de Duración */}
+                                <div className="relative overflow-hidden rounded-t-2xl aspect-video">
+                                    <img 
+                                        src={tour.image.src} 
+                                        alt={tour.title} 
+                                        loading="lazy" 
+                                        className="w-full h-full object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500" 
+                                    />
+                                    {/* Badge flotante de Duración */}
+                                    <span className="absolute top-4 right-4 bg-brand-purple text-brand-yellow font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md z-10 border border-brand-yellow/10">
+                                        <i className="fa-regular fa-clock mr-1"></i> {tour.days}
+                                    </span>
+                                </div>
 
-                                {/* Imagen */}
-                                <img
-                                    src={tour.image.src}
-                                    alt={tour.title}
-                                    loading="lazy"
-                                    className="w-full h-56 object-cover rounded-t-lg"
-                                />
-
-                                <div className="p-6">
-                                    {/* Título */}
-                                    <h3 className="text-xl font-semibold mb-2">
+                                {/* Cuerpo de la Tarjeta */}
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-lg font-bold text-brand-purple mb-4 group-hover:text-brand-orange transition-colors duration-300">
                                         {tour.title}
                                     </h3>
+                                    
+                                    {/* Lista de Actividades */}
+                                    <ul className="text-left mb-6 space-y-2 flex-grow text-gray-500 font-light text-sm">
+                                        {tour.lista.map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2">
+                                                <i className="fa-solid fa-circle-check text-brand-orange text-xs mt-1 shrink-0"></i>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
 
-                                    {/* Días */}
-                                    <p className="font-medium text-yellow-600 mb-2">
-                                        {tour.days}
-                                    </p>
-
-                                    {/* Precio */}
-                                    <p className="text-red-600 font-bold mb-3">
-                                        Desde S/. {tour.price}
-                                    </p>
-
-                                    {/* Descripción */}
-                                    <p className="font-light mb-4">
-                                        {tour.description}
-                                    </p>
-
-                                    {/* Botón */}
-                                    <a
-                                        href={waLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-block px-4 py-2 bg-brand-purple text-white rounded-md hover:bg-brand-orange"
-                                    >
-                                        Consultar ahora
-                                        <i className="fa-brands fa-whatsapp ml-1"></i>
-                                    </a>
+                                    {/* Separador y Botón de WhatsApp - Abre Modal de Precios */}
+                                    <div className="border-t border-gray-100 pt-4 mt-auto">
+                                        {tour.hasModal ? (
+                                            <button 
+                                                onClick={() => setSelectedTourIndex(index)}
+                                                className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                            >
+                                                <i className="fa-solid fa-tags text-sm"></i>
+                                                <span>Ver opciones de precios</span>
+                                            </button>
+                                        ) : (
+                                            <a 
+                                                href={`https://wa.me/51918024860?text=${encodeURIComponent(`¡Hola! Hakuna Matata Travel VIP. Estoy interesado en el paquete ${tour.title} - ${tour.days}.`)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                            >
+                                                <i className="fa-brands fa-whatsapp text-lg"></i>
+                                                <span>Consultar precio</span>
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         );
                     })}
                 </div>
-
-                {/* 🔻 Galería ABAJO, independiente de los cards */}
-                <h3 className="text-2xl font-semibold mt-16 mb-6">Experiencias</h3>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4">
-                    {galleryImages.map((img, index) => (
-                        <img
-                            key={index}
-                            src={img.src}
-                            alt={`Galería ${index}`}
-                            loading="lazy"
-                            className="h-32 w-full object-cover rounded-lg shadow-sm hover:scale-105 transition-transform cursor-pointer"
-                        />
-                    ))}
-                </div>
             </div>
+
+            {/* MODAL DE PRECIOS */}
+            {selectedTourIndex !== null && (
+                <div 
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-300"
+                    onClick={() => setSelectedTourIndex(null)}
+                >
+                    <div 
+                        className="bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh] animate-in fade-in zoom-in-95 duration-200"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Cabecera del Modal */}
+                        <div className="bg-brand-purple text-white px-5 py-3.5 flex justify-between items-center">
+                            <div>
+                                <h3 className="text-base font-medium">Opciones de Precios</h3>
+                                <p className="text-[10px] text-brand-yellow font-normal">{tours[selectedTourIndex].title} {tours[selectedTourIndex].days}</p>
+                            </div>
+                            <button 
+                                onClick={() => setSelectedTourIndex(null)}
+                                className="text-white hover:text-brand-orange transition text-xl p-1 cursor-pointer focus:outline-none"
+                                aria-label="Cerrar modal"
+                            >
+                                <i className="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+
+                        {/* Contenido del Modal */}
+                        <div className="p-4 overflow-y-auto space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {/* SECCIÓN TODO EL AÑO (VERDE) */}
+                                <div className="border border-emerald-100 rounded-xl overflow-hidden shadow-xs flex flex-col">
+                                    <div className="bg-emerald-50/85 px-3 py-1.5 border-b border-emerald-100 text-center">
+                                        <span className="text-emerald-800 font-medium text-xs uppercase tracking-wider block">
+                                            <i className="fa-solid fa-calendar-check mr-1.5"></i> Oferta Todo el Año
+                                        </span>
+                                    </div>
+                                    <div className="p-3 space-y-3 flex-grow bg-white">
+                                        {/* Subsección: Alojamiento + Tours */}
+                                        <div className="space-y-1">
+                                            <span className="text-[10px] font-normal text-gray-400 uppercase tracking-wider block text-left">
+                                                Alojamiento + Tours:
+                                            </span>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours (Básico)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoTours.basico + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoTours.basico}</span>
+                                                    <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoTours.exclusivo + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoTours.exclusivo}</span>
+                                                    <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {/* Subsección: Alojamiento + Tours + Bus */}
+                                        <div className="space-y-1 pt-1.5 border-t border-gray-100">
+                                            <span className="text-[10px] font-normal text-gray-400 uppercase tracking-wider block text-left">
+                                                Alojamiento + Tours + Bus:
+                                            </span>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours + Bus (Básico)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoToursBus.basico + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoToursBus.basico}</span>
+                                                    <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours + Bus (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoToursBus.exclusivo + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoToursBus.exclusivo}</span>
+                                                    <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* SECCIÓN FERIADOS (ROJO) */}
+                                <div className="border border-red-100 rounded-xl overflow-hidden shadow-xs flex flex-col">
+                                    <div className="bg-red-50/85 px-3 py-1.5 border-b border-red-100 text-center">
+                                        <span className="text-red-800 font-medium text-xs uppercase tracking-wider block">
+                                            <i className="fa-solid fa-fire mr-1.5"></i> Ofertas de Feriado
+                                        </span>
+                                    </div>
+                                    <div className="p-3 space-y-3 flex-grow bg-white">
+                                        {/* Subsección: Alojamiento + Tours */}
+                                        <div className="space-y-1">
+                                            <span className="text-[10px] font-normal text-gray-400 uppercase tracking-wider block text-left">
+                                                Alojamiento + Tours:
+                                            </span>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours (Básico)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoTours.basico + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoTours.basico}</span>
+                                                    <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoTours.exclusivo + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoTours.exclusivo}</span>
+                                                    <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {/* Subsección: Alojamiento + Tours + Bus */}
+                                        <div className="space-y-1 pt-1.5 border-t border-gray-100">
+                                            <span className="text-[10px] font-normal text-gray-400 uppercase tracking-wider block text-left">
+                                                Alojamiento + Tours + Bus:
+                                            </span>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours + Bus (Básico)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoToursBus.basico + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoToursBus.basico}</span>
+                                                    <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                                <a 
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours + Bus (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoToursBus.exclusivo + '.')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
+                                                >
+                                                    <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoToursBus.exclusivo}</span>
+                                                    <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
+                                                        <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Mensaje de Términos y Condiciones */}
+                            <div className="bg-gray-50 rounded-xl p-3 border border-gray-100 flex gap-2.5 text-left">
+                                <i className="fa-solid fa-circle-info text-brand-orange text-base mt-0.5 shrink-0"></i>
+                                <div className="text-[10.5px] leading-normal text-gray-500 space-y-0.5">
+                                    <p className="font-medium text-gray-700">Información importante sobre las tarifas:</p>
+                                    <p>• Tarifas por persona base habitación doble/matrimonial. Básico incluye alojamiento estándar; Exclusivo incluye hoteles premium.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pie del Modal */}
+                        <div className="bg-gray-50 px-5 py-3 border-t border-gray-100 flex justify-end">
+                            <button 
+                                onClick={() => setSelectedTourIndex(null)}
+                                className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-xl text-xs shadow-xs transition duration-200 cursor-pointer"
+                            >
+                                Cerrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Galería ABAJO, independiente de los cards */}
+            <div className="text-center mt-20 mb-10">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-brand-purple tracking-tight">Experiencias</h3>
+                <div className="w-12 h-1 bg-brand-orange mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4 lg:px-8">
+                {galleryImages.map((img, index) => (
+                    <img
+                        key={index}
+                        src={img.src}
+                        alt={`Galería ${index}`}
+                        loading="lazy"
+                        className="h-32 w-full object-cover rounded-lg shadow-sm hover:scale-105 transition-transform cursor-pointer"
+                    />
+                ))}
+            </div>
+
         </section>
     );
 };
 
-export default Recomendation;
+export default TourEscolares;

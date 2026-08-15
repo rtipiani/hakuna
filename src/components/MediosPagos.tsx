@@ -24,7 +24,10 @@ export default function MediosPago() {
 
                         <div className="flex items-center justify-center gap-10 mb-10">
                             <img src={bcp.src} alt="BCP" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
-                            <img src={bbva.src} alt="BBVA" loading="lazy" className="h-14 object-contain drop-shadow-sm" />
+                            <div className="flex items-center gap-2">
+                                <i className="fa-solid fa-building-columns text-3xl text-emerald-600"></i>
+                                <span className="font-bold text-emerald-600 text-lg">Interbank</span>
+                            </div>
                         </div>
 
                         <div className="space-y-8">
@@ -46,17 +49,17 @@ export default function MediosPago() {
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold text-red-600 mb-2">BBVA - Soles</h3>
+                                <h3 className="text-xl font-bold text-red-600 mb-2">Interbank - Soles</h3>
 
                                 <div className="space-y-1">
                                     <p className="text-gray-700 text-sm">
-                                        N° Cuenta: <span className="font-semibold">0011-0814-0221427225</span>
+                                        N° Cuenta: <span className="font-semibold">8983497098086</span>
                                     </p>
                                     <p className="text-gray-700 text-sm">
-                                        CCI: <span className="font-semibold">011-814-000221427225-10</span>
+                                        CCI: <span className="font-semibold">003-898-013497098086-45</span>
                                     </p>
                                     <p className="text-gray-700 text-sm">
-                                        Titular: <span className="font-semibold">KARINA DE LA CRUZ PAZCE</span>
+                                        Titular: <span className="font-semibold">JEANPIER LEONARDO QUISPE</span>
                                     </p>
                                 </div>
                             </div>
@@ -82,11 +85,11 @@ export default function MediosPago() {
                         </p>
 
                         <p className="text-4xl font-bold text-red-600 text-center tracking-wider mb-4">
-                            964 534 249
+                            935 652 497
                         </p>
 
                         <p className="text-gray-700 text-sm text-center">
-                            Titular: <span className="font-semibold">KARINA DE LA CRUZ PAZCE</span>
+                            Titular: <span className="font-semibold">JEANPIER LEONARDO QUISPE</span>
                         </p>
 
                     </div>

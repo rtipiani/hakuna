@@ -7,10 +7,12 @@ export default function Footer() {
 
                 <div>
                     <img src={logo.src} alt="Hakuna Matata Travel VIP" className="w-36 mb-4" />
-                    <p className="text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed mb-2">
                         Agencia de viajes y turismo con amplia experiencia. 
                         Viaja con los mejores por toda la selva central.
                     </p>
+                    <p className="text-xs text-gray-400">RUC: 10620133537</p>
+                    <p className="text-xs text-gray-400">MINCETUR: N° 023-04</p>
                 </div>
 
                 <div>
@@ -28,10 +30,9 @@ export default function Footer() {
                 <div>
                     <h3 className="text-white font-semibold mb-4">Información</h3>
                     <ul className="space-y-2 text-sm">
-                        <li><i className="fa-solid fa-location-dot mr-2"></i>Jr. Tarma N° 290, Chanchamayo, La Merced</li>
-                        <li><i className="fa-solid fa-phone mr-2"></i>+51 964 534 249</li>
-                        <li><i className="fa-solid fa-phone mr-2"></i>+51 902 498 111</li>
-                        <li><i className="fa-solid fa-envelope mr-2"></i>contacto@hakunamatatatravel.com</li>
+                        <li><i className="fa-solid fa-location-dot mr-2"></i>s/n Terminal Selva Central stand n° 201, La Merced Chanchamayo</li>
+                        <li><i className="fa-solid fa-phone mr-2"></i>+51 935 652 497</li>
+                        <li><i className="fa-solid fa-envelope mr-2"></i>HAKUNAMATATATRAVEL@gmail.com</li>
                         <li>
                             <a href="/nuestras-politicas">
                                 <i className="fa-solid fa-book mr-2"></i>
@@ -75,7 +76,7 @@ export default function Footer() {
                         </a>
 
                         <a 
-                            href="https://wa.link/exn5e4" 
+                            href="https://wa.me/51935652497" 
                             className="hover:text-white transition-colors"
                             title="WhatsApp Hakuna Matata"
                             target="_blank"

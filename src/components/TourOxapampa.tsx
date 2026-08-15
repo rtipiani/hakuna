@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import iglesia from "../assets/images/iglesia-san-jose.png";
+import oxapampaImg from "../assets/images/oxapampa.png";
+import pereneImg from "../assets/images/perene.png";
 
 // Galería general
 import g1 from "../assets/images/escolares/esc4.png";
@@ -30,7 +32,224 @@ const tours = [
             "Museo Schafferer (opcional)"
         ],
         image: iglesia,
-        hasModal: true
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 135, exclusivo: 180 },
+                alojamientoToursBus: { basico: 285, exclusivo: 330 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 200, exclusivo: 250 },
+                alojamientoToursBus: { basico: 420, exclusivo: 450 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo y Villa Rica",
+        days: "3D/2N",
+        price: 0,
+        lista: [
+            "Tour Oxapampa (Tunki Cueva, Wharapo, etc.)",
+            "Tour Pozuzo (Pozas Turquesas, Prusia, etc.)",
+            "Tour Villa Rica (Laguna El Oconal, etc.)",
+            "2 Noches de alojamiento en Oxapampa",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        image: oxapampaImg,
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 225, exclusivo: 315 },
+                alojamientoToursBus: { basico: 375, exclusivo: 465 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 350, exclusivo: 450 },
+                alojamientoToursBus: { basico: 570, exclusivo: 650 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica y Perené",
+        days: "4D/3N",
+        price: 0,
+        image: pereneImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené (Chanchamayo)",
+            "3 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 315, exclusivo: 450 },
+                alojamientoToursBus: { basico: 465, exclusivo: 600 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 500, exclusivo: 650 },
+                alojamientoToursBus: { basico: 720, exclusivo: 850 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica, Perené y Aventura",
+        days: "5D/4N",
+        price: 0,
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "4 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 405, exclusivo: 585 },
+                alojamientoToursBus: { basico: 555, exclusivo: 735 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 650, exclusivo: 850 },
+                alojamientoToursBus: { basico: 870, exclusivo: 1050 }
+            }
+        }
+    },
+    {
+        title: "Oxapampa, Pozuzo, Villa Rica, Perené, Aventura y City Tour",
+        days: "6D/5N",
+        price: 0,
+        image: oxapampaImg,
+        lista: [
+            "City Tour",
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "5 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: true,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 495, exclusivo: 720 },
+                alojamientoToursBus: { basico: 645, exclusivo: 870 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 800, exclusivo: 1050 },
+                alojamientoToursBus: { basico: 1020, exclusivo: 1250 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN: Salida a Oxapampa (Escolar)",
+        days: "6D/5N",
+        price: 0,
+        image: oxapampaImg,
+        lista: [
+            "City Tour",
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "5 Noches de alojamiento",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
+        days: "5D/4N",
+        price: 0,
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "Tour de Aventura",
+            "4 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN SALIDA A OXAPAMPA VIP (Escolar)",
+        days: "4D/3N",
+        price: 0,
+        image: pereneImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "Tour Valle del Perené",
+            "3 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
+    },
+    {
+        title: "PROMOCIÓN OXAPAMPA SALIDA VIP (Escolar)",
+        days: "3D/2N",
+        price: 0,
+        image: oxapampaImg,
+        lista: [
+            "Tour Oxapampa",
+            "Tour Pozuzo",
+            "Tour Villa Rica",
+            "2 Noches de alojamiento",
+            "Noche de Integración VIP (Fogata / Fiesta de despedida)",
+            "Traslados In/Out, movilidad para tours y guía local"
+        ],
+        hasModal: false,
+        precios: {
+            normal: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            },
+            feriado: {
+                alojamientoTours: { basico: 0, exclusivo: 0 },
+                alojamientoToursBus: { basico: 0, exclusivo: 0 }
+            }
+        }
     }
 ];
 
@@ -38,7 +257,7 @@ const tours = [
 const galleryImages = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
 
 const TourOxapampa = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedTourIndex, setSelectedTourIndex] = useState<number | null>(null);
 
     return (
         <section className="py-20 bg-gray-50/50">
@@ -99,7 +318,7 @@ const TourOxapampa = () => {
                                     {tour.hasModal ? (
                                         <div className="border-t border-gray-100 pt-4 mt-auto">
                                             <button 
-                                                onClick={() => setIsModalOpen(true)}
+                                                onClick={() => setSelectedTourIndex(index)}
                                                 className="w-full flex items-center justify-center gap-2 bg-brand-purple text-white font-bold py-3 px-4 rounded-xl shadow-md hover:bg-brand-orange transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                                             >
                                                 <i className="fa-solid fa-tags text-sm"></i>
@@ -110,12 +329,20 @@ const TourOxapampa = () => {
                                         <>
                                             <div className="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between mb-4">
                                                 <div className="flex flex-col text-left">
-                                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                                                        Desde
-                                                    </span>
-                                                    <span className="text-2xl font-extrabold text-brand-orange">
-                                                        S/. {tour.price}
-                                                    </span>
+                                                    {tour.price > 0 ? (
+                                                        <>
+                                                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                                                                Desde
+                                                            </span>
+                                                            <span className="text-2xl font-extrabold text-brand-orange">
+                                                                S/. {tour.price}
+                                                            </span>
+                                                        </>
+                                                    ) : (
+                                                        <span className="text-xl font-extrabold text-brand-orange mt-2">
+                                                            Consultar precio
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </div>
                                             <a 
@@ -136,11 +363,11 @@ const TourOxapampa = () => {
                 </div>
             </div>
 
-            {/* MODAL DE PRECIOS PARA POZUZO 2D/1N */}
-            {isModalOpen && (
+            {/* MODAL DE PRECIOS */}
+            {selectedTourIndex !== null && (
                 <div 
                     className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-300"
-                    onClick={() => setIsModalOpen(false)}
+                    onClick={() => setSelectedTourIndex(null)}
                 >
                     <div 
                         className="bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh] animate-in fade-in zoom-in-95 duration-200"
@@ -150,10 +377,10 @@ const TourOxapampa = () => {
                         <div className="bg-brand-purple text-white px-5 py-3.5 flex justify-between items-center">
                             <div>
                                 <h3 className="text-base font-medium">Opciones de Precios</h3>
-                                <p className="text-[10px] text-brand-yellow font-normal">Tour Oxapampa y Pozuzo 2D/1N</p>
+                                <p className="text-[10px] text-brand-yellow font-normal">{tours[selectedTourIndex].title} {tours[selectedTourIndex].days}</p>
                             </div>
                             <button 
-                                onClick={() => setIsModalOpen(false)}
+                                onClick={() => setSelectedTourIndex(null)}
                                 className="text-white hover:text-brand-orange transition text-xl p-1 cursor-pointer focus:outline-none"
                                 aria-label="Cerrar modal"
                             >
@@ -179,25 +406,25 @@ const TourOxapampa = () => {
                                             </span>
                                             <div className="grid grid-cols-2 gap-2">
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20Todo%20el%20A%C3%B1o%20-%20Alojamiento%20%2B%20Tours%20%28B%C3%A1sico%29%2A%20por%20S%2F.%20135."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours (Básico)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoTours.basico + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 135</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoTours.basico}</span>
                                                     <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
                                                 </a>
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20Todo%20el%20A%C3%B1o%20-%20Alojamiento%20%2B%20Tours%20%28Exclusivo%29%2A%20por%20S%2F.%20180."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoTours.exclusivo + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 180</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoTours.exclusivo}</span>
                                                     <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
@@ -211,25 +438,25 @@ const TourOxapampa = () => {
                                             </span>
                                             <div className="grid grid-cols-2 gap-2">
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20Todo%20el%20A%C3%B1o%20-%20Alojamiento%20%2B%20Tours%20%2B%20Bus%20%28B%C3%A1sico%29%2A%20por%20S%2F.%20285."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours + Bus (Básico)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoToursBus.basico + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 285</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoToursBus.basico}</span>
                                                     <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
                                                 </a>
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20Todo%20el%20A%C3%B1o%20-%20Alojamiento%20%2B%20Tours%20%2B%20Bus%20%28Exclusivo%29%2A%20por%20S%2F.%20330."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta Todo el Año - Alojamiento + Tours + Bus (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.normal.alojamientoToursBus.exclusivo + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-emerald-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 330</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.normal.alojamientoToursBus.exclusivo}</span>
                                                     <span className="text-[8px] font-medium text-emerald-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
@@ -254,25 +481,25 @@ const TourOxapampa = () => {
                                             </span>
                                             <div className="grid grid-cols-2 gap-2">
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20de%20Feriado%20-%20Alojamiento%20%2B%20Tours%20%28B%C3%A1sico%29%2A%20por%20S%2F.%20200."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours (Básico)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoTours.basico + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 200</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoTours.basico}</span>
                                                     <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
                                                 </a>
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20de%20Feriado%20-%20Alojamiento%20%2B%20Tours%20%28Exclusivo%29%2A%20por%20S%2F.%20250."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoTours.exclusivo + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 250</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoTours.exclusivo}</span>
                                                     <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
@@ -286,25 +513,25 @@ const TourOxapampa = () => {
                                             </span>
                                             <div className="grid grid-cols-2 gap-2">
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20de%20Feriado%20-%20Alojamiento%20%2B%20Tours%20%2B%20Bus%20%28B%C3%A1sico%29%2A%20por%20S%2F.%20420."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours + Bus (Básico)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoToursBus.basico + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Básico</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 420</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoToursBus.basico}</span>
                                                     <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
                                                 </a>
                                                 <a 
-                                                    href="https://wa.me/51918024860?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quiero%20reservar%20el%20Tour%20Oxapampa%20y%20Pozuzo%202D%2F1N%20en%20la%20opci%C3%B3n%20%2A%C3%93ferta%20de%20Feriado%20-%20Alojamiento%20%2B%20Tours%20%2B%20Bus%20%28Exclusivo%29%2A%20por%20S%2F.%20450."
+                                                    href={`https://wa.me/51918024860?text=${encodeURIComponent('Hola Hakuna Matata Travel VIP, quiero reservar el ' + tours[selectedTourIndex].title + ' ' + tours[selectedTourIndex].days + ' en la opción *Oferta de Feriado - Alojamiento + Tours + Bus (Exclusivo)* por S/. ' + tours[selectedTourIndex].precios.feriado.alojamientoToursBus.exclusivo + '.')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="bg-gray-50 border border-gray-100 hover:border-red-300 p-2 rounded-lg text-center group/opt transition duration-200"
                                                 >
                                                     <span className="text-[9px] font-normal text-gray-400 block uppercase">Exclusivo</span>
-                                                    <span className="text-base font-medium text-gray-700 block">S/. 450</span>
+                                                    <span className="text-base font-medium text-gray-700 block">S/. {tours[selectedTourIndex].precios.feriado.alojamientoToursBus.exclusivo}</span>
                                                     <span className="text-[8px] font-medium text-red-600 uppercase flex items-center justify-center gap-1 mt-0.5 opacity-80 group-hover/opt:opacity-100">
                                                         <i className="fa-brands fa-whatsapp text-xs"></i> Reservar
                                                     </span>
@@ -328,7 +555,7 @@ const TourOxapampa = () => {
                         {/* Pie del Modal */}
                         <div className="bg-gray-50 px-5 py-3 border-t border-gray-100 flex justify-end">
                             <button 
-                                onClick={() => setIsModalOpen(false)}
+                                onClick={() => setSelectedTourIndex(null)}
                                 className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-xl text-xs shadow-xs transition duration-200 cursor-pointer"
                             >
                                 Cerrar

@@ -1,49 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-import img1 from "../assets/images/galeria/villarica-1.png";
-import img2 from "../assets/images/galeria/villarica-2.png";
-import img3 from "../assets/images/galeria/villarica-3.png";
-import img4 from "../assets/images/galeria/villarica-4.png";
-import img5 from "../assets/images/galeria/villarica-5.png";
-import img6 from "../assets/images/galeria/villarica-6.png";
-import img7 from "../assets/images/galeria/villarica-7.png";
-import img8 from "../assets/images/galeria/oxapampa-1.png";
-import img9 from "../assets/images/galeria/oxapampa-2.png";
-import img10 from "../assets/images/galeria/oxapampa-3.png";
-import img11 from "../assets/images/galeria/oxapampa-4.png";
-import img12 from "../assets/images/galeria/oxapampa-5.png";
-import img13 from "../assets/images/galeria/oxapampa-6.png";
-import img14 from "../assets/images/galeria/oxapampa-7.png";
-import img15 from "../assets/images/galeria/chanchamayo-1.png";
-import img17 from "../assets/images/galeria/chanchamayo-3.png";
-import img18 from "../assets/images/galeria/chanchamayo-4.png";
-import img19 from "../assets/images/galeria/chanchamayo-5.png";
-import img20 from "../assets/images/galeria/chanchamayo-6.png";
-
-import gal1 from "../assets/images/galeria/gal1.png";
-import gal2 from "../assets/images/galeria/gal2.png";
-import gal3 from "../assets/images/galeria/gal3.png";
-import gal4 from "../assets/images/galeria/gal4.png";
-import gal5 from "../assets/images/galeria/gal5.png";
+import img1 from "../assets/images/galeria/galeria1.png";
+import img2 from "../assets/images/galeria/galeria2.png";
+import img3 from "../assets/images/galeria/galeria3.png";
+import img4 from "../assets/images/galeria/galeria4.png";
+import img5 from "../assets/images/galeria/galeria5.png";
+import img6 from "../assets/images/galeria/galeria6.png";
+import img7 from "../assets/images/galeria/galeria7.png";
+import img8 from "../assets/images/galeria/galeria8.png";
+import img9 from "../assets/images/galeria/galeria9.png";
+import img10 from "../assets/images/galeria/galeria10.png";
+import img11 from "../assets/images/galeria/galeria11.png";
+import img12 from "../assets/images/galeria/galeria12.png";
+import img13 from "../assets/images/galeria/galeria13.png";
+import img14 from "../assets/images/galeria/galeria14.png";
+import img15 from "../assets/images/galeria/galeria15.png";
+import img16 from "../assets/images/galeria/galeria16.png";
+import img17 from "../assets/images/galeria/galeria17.png";
+import img18 from "../assets/images/galeria/galeria18.png";
+import img19 from "../assets/images/galeria/galeria19.png";
+import img20 from "../assets/images/galeria/galeria20.png";
 
 export default function Gallery() {
     const images = [
-        gal1, gal2, gal3, gal4, gal5, img1, img2, img3, img4, img5, img6, img7,
-        img8, img9, img10, img11, img12, img13, img14,
-        img15, img17, img18, img19, img20
+        img1, img2, img3, img4, img5, img6, img7,
+        img8, img9, img10, img11, img12, img13, img14, img15, img16, img17,
+        img18, img19, img20
     ];
 
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-    const showPrev = () => {
-        if (currentIndex === null) return;
-        setCurrentIndex((currentIndex - 1 + images.length) % images.length);
-    };
+    const showPrev = useCallback(() => {
+        setCurrentIndex((prev) => prev !== null ? (prev - 1 + images.length) % images.length : null);
+    }, [images.length]);
 
-    const showNext = () => {
-        if (currentIndex === null) return;
-        setCurrentIndex((currentIndex + 1) % images.length);
-    };
+    const showNext = useCallback(() => {
+        setCurrentIndex((prev) => prev !== null ? (prev + 1) % images.length : null);
+    }, [images.length]);
+
+    useEffect(() => {
+        if (currentIndex !== null) {
+            document.body.style.overflow = "hidden";
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (e.key === "Escape") setCurrentIndex(null);
+                if (e.key === "ArrowLeft") showPrev();
+                if (e.key === "ArrowRight") showNext();
+            };
+            window.addEventListener("keydown", handleKeyDown);
+            return () => {
+                window.removeEventListener("keydown", handleKeyDown);
+                document.body.style.overflow = "auto";
+            };
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [currentIndex, showPrev, showNext]);
 
     return (
         <section className="w-full py-20 bg-white">

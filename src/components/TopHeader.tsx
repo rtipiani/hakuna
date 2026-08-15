@@ -7,12 +7,12 @@ const TopHeader: React.FC = () => {
                 {/* Contacto Izquierda */}
                 <div className="flex items-center space-x-6">
                     <a 
-                        href="tel:+51964534249" 
+                        href="tel:+51935652497" 
                         className="flex items-center gap-2 hover:text-brand-yellow transition duration-200" 
                         aria-label="Llamar a Hakuna Matata Travel VIP"
                     >
                         <i className="fas fa-phone text-[10px]"></i>
-                        <span>+51 964 534 249</span>
+                        <span>+51 935 652 497</span>
                     </a>
                     
                     <a 

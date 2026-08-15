@@ -130,7 +130,7 @@ const MediosDePago = () => {
                                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center px-2 py-1">
                                             <div>
                                                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block">Titular</span>
-                                                <span className="text-sm font-semibold text-gray-700">JEANPIERRE LEONARDO QUISPE</span>
+                                                <span className="text-sm font-semibold text-gray-700">JEANPIER LEONARDO QUISPE</span>
                                             </div>
                                             <div className="sm:text-right">
                                                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block">Operación</span>
@@ -252,15 +252,16 @@ const MediosDePago = () => {
                                 </div>
                             </div>
 
-                            {/* BANCO BBVA */}
+                            {/* BANCO INTERBANK */}
                             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-xl shadow-gray-100/50 flex flex-col justify-between relative group hover:border-gray-200/80 transition duration-300">
-                                <div className="absolute top-0 left-0 w-full h-2 bg-sky-800 rounded-t-3xl"></div>
+                                <div className="absolute top-0 left-0 w-full h-2 bg-emerald-600 rounded-t-3xl"></div>
                                 <div>
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className="bg-sky-50/50 px-4 py-2.5 rounded-xl border border-sky-100">
-                                            <img src={bbva.src} alt="BBVA" className="h-6 object-contain" />
+                                        <div className="bg-emerald-50/50 px-4 py-2.5 rounded-xl border border-emerald-100 flex items-center gap-2">
+                                            <i className="fa-solid fa-building-columns text-emerald-600 text-xl"></i>
+                                            <span className="font-bold text-emerald-600">Interbank</span>
                                         </div>
-                                        <span className="bg-sky-50 text-sky-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-sky-100">
+                                        <span className="bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-emerald-100">
                                             Soles (S/.)
                                         </span>
                                     </div>
@@ -273,13 +274,13 @@ const MediosDePago = () => {
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
                                                 <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
-                                                    0011-0814-0221427225
+                                                    8983497098086
                                                 </span>
                                                 <button
-                                                    onClick={() => handleCopy("0011-0814-0221427225", "bbva-cuenta")}
+                                                    onClick={() => handleCopy("8983497098086", "interbank-cuenta")}
                                                     className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-gray-50 hover:bg-brand-purple hover:text-white text-gray-500 text-xs font-semibold transition duration-200 cursor-pointer"
                                                 >
-                                                    {copiedId === "bbva-cuenta" ? (
+                                                    {copiedId === "interbank-cuenta" ? (
                                                         <><i className="fa-solid fa-check"></i><span>¡Ok!</span></>
                                                     ) : (
                                                         <><i className="fa-regular fa-copy"></i><span>Copiar</span></>
@@ -295,13 +296,13 @@ const MediosDePago = () => {
                                             </span>
                                             <div className="flex items-center justify-between gap-4">
                                                 <span className="text-base sm:text-lg font-bold text-gray-800 tracking-wide">
-                                                    011-814-000221427225-10
+                                                    003-898-013497098086-45
                                                 </span>
                                                 <button
-                                                    onClick={() => handleCopy("011-814-000221427225-10", "bbva-cci")}
+                                                    onClick={() => handleCopy("003-898-013497098086-45", "interbank-cci")}
                                                     className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-gray-50 hover:bg-brand-purple hover:text-white text-gray-500 text-xs font-semibold transition duration-200 cursor-pointer"
                                                 >
-                                                    {copiedId === "bbva-cci" ? (
+                                                    {copiedId === "interbank-cci" ? (
                                                         <><i className="fa-solid fa-check"></i><span>¡Ok!</span></>
                                                     ) : (
                                                         <><i className="fa-regular fa-copy"></i><span>Copiar</span></>
@@ -316,7 +317,7 @@ const MediosDePago = () => {
                                                 Titular
                                             </span>
                                             <span className="text-sm font-bold text-brand-purple">
-                                                KARINA DE LA CRUZ PAZCE
+                                                JEANPIER LEONARDO QUISPE
                                             </span>
                                         </div>
                                     </div>
@@ -384,7 +385,7 @@ const MediosDePago = () => {
                                     Para coordinar estos métodos de pago, comunícate con un asesor.
                                 </span>
                                 <a
-                                    href="https://wa.me/51964534249?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quisiera%20solicitar%20un%20enlace%20de%20pago%20con%20tarjeta%20o%20los%20datos%20de%20PayPal/Western%20Union."
+                                    href="https://wa.me/51935652497?text=Hola%20Hakuna%20Matata%20Travel%20VIP%2C%20quisiera%20solicitar%20un%20enlace%20de%20pago%20con%20tarjeta%20o%20los%20datos%20de%20PayPal/Western%20Union."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 bg-emerald-600 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md hover:bg-emerald-500 transition duration-300 hover:scale-[1.02] cursor-pointer"
